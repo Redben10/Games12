@@ -6,20 +6,18 @@
     <title>Void's Games</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Global Styles */
         body {
             font-family: 'Arial', sans-serif;
             background-color: #1a1a1a;
             color: #f5f5f5;
             margin: 0;
             padding: 0;
-            height: 100vh; /* Set body height to 100% of viewport */
-            overflow: hidden; /* Prevent scrolling */
+            height: 100vh; 
+            overflow: hidden; 
             display: flex;
             flex-direction: column;
         }
 
-        /* Top Bar Styling */
         .topbar {
             background-color: #222;
             padding: 20px;
@@ -36,7 +34,6 @@
             color: #f5f5f5;
         }
 
-        /* Navigation Buttons */
         .nav-buttons {
             margin-top: 10px;
         }
@@ -63,18 +60,16 @@
             background-color: #666;
         }
 
-        /* Content Styling */
         .content {
             display: flex;
-            flex-wrap: wrap; /* Allow wrapping for more buttons */
-            justify-content: center; /* Center content horizontally */
-            padding: 20px; /* Add some padding */
-            gap: 30px; /* Space between game buttons */
-            flex-grow: 1; /* Allow content to grow */
-            overflow-y: auto; /* Allow vertical scrolling if needed */
+            flex-wrap: wrap; 
+            justify-content: center; 
+            padding: 20px;
+            gap: 30px; 
+            flex-grow: 1; 
+            overflow-y: auto; 
         }
 
-        /* Game Button Styling */
         .game-button {
             text-decoration: none;
             display: flex;
@@ -85,39 +80,37 @@
         }
 
         .game-button:hover {
-            transform: translateY(-5px); /* Slight hover effect */
+            transform: translateY(-5px); 
         }
 
-        /* Image Container Styling */
         .image-container {
             position: relative;
             display: inline-block;
-            margin-bottom: 10px; /* Space below images */
+            margin-bottom: 10px; 
         }
 
         .image-container img {
-            width: 150px; /* Adjust size as needed */
+            width: 150px; 
             height: auto;
             border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Image shadow for depth */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); 
             transition: transform 0.2s;
         }
 
         .image-container:hover img {
-            transform: scale(1.05); /* Zoom-in effect on hover */
+            transform: scale(1.05); 
         }
 
-        /* Tooltip Styling */
         .tooltip {
             visibility: hidden;
             width: 150px;
-            background-color: rgba(34, 34, 34, 0.8); /* Slight transparency for better look */
+            background-color: rgba(34, 34, 34, 0.8); 
             color: #fff;
             text-align: center;
             border-radius: 10px;
             padding: 5px;
             position: absolute;
-            bottom: 5px; /* Position slightly above the bottom of the image */
+            bottom: 5px; 
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
