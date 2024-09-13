@@ -1,0 +1,169 @@
+{
+  "gameButtons": [
+    {
+      "text": "Burrito Bison",
+      "link": "/iframe/burritobision",
+      "image": "./img/burrito-bison-image.png"
+    },
+    {
+      "text": "Subway Surfers",
+      "link": "/Iframe/subsurfers",
+      "image": "./img/subwaysurfers.png"
+    },
+    {
+      "text": "Basketball Stars",
+      "link": "/Iframe/basketball-stars/",
+      "image": "/img/BAS.webp"
+    },
+    {
+      "text": "Bit Plane",
+      "link": "/Iframe/Planes",
+      "image": "./img/plane.jpg"
+    },
+    {
+      "text": "Monkey Mart",
+      "link": "/Iframe/monkey",
+      "image": "./img/monkey.jpeg"
+    },
+    {
+      "text": "Funny Shooter 2",
+      "link": "/Iframe/funnyshooter2",
+      "image": "./img/funnyshooter2.webp"
+    },
+    {
+      "text": "Impossible Quiz",
+      "link": "/Iframe/impossiblequiz",
+      "image": "./img/impossiblequiz.webp"
+    },
+    {
+      "text": "Jetpack Joyride",
+      "link": "/Iframe/jetpack-joyride",
+      "image": "./img/jetpack-joyride.webp"
+    },
+    {
+      "text": "Learn to Fly",
+      "link": "/Iframe/learntofly",
+      "image": "./img/learntofly.webp"
+    },
+    {
+      "text": "Learn to Fly 2",
+      "link": "/Iframe/learntofly2",
+      "image": "./img/learntofly2.webp"
+    },
+    {
+      "text": "Moto X3M",
+      "link": "/Iframe/motox3m",
+      "image": "./img/motox3m.webp"
+    },
+    {
+      "text": "Moto X3M Pool",
+      "link": "/Iframe/motoxpool",
+      "image": "./img/motoxpool.webp"
+    },
+    {
+      "text": "Moto X3M Spooky",
+      "link": "/Iframe/moto-spook",
+      "image": "./img/moto-spook.webp"
+    },
+    {
+      "text": "Moto X3M Winter",
+      "link": "/Iframe/motoxpool",
+      "image": "./img/motoxpool.webp"
+    },
+    {
+      "text": "Riddle School",
+      "link": "/Iframe/riddleschool",
+      "image": "./img/riddleschool.webp"
+    },
+    {
+      "text": "Riddle School 2",
+      "link": "/Iframe/riddleschool2",
+      "image": "./img/riddleschool.webp"
+    },
+    {
+      "text": "Riddle School 3",
+      "link": "/Iframe/riddleschool3",
+      "image": "./img/riddleschool.webp"
+    },
+    {
+      "text": "Riddle School 4",
+      "link": "/Iframe/riddleschool4",
+      "image": "./img/riddleschool.webp"
+    },
+    {
+      "text": "Riddle School 5",
+      "link": "/Iframe/riddleschool5",
+      "image": "./img/riddleschool.webp"
+    },
+    {
+      "text": "Slope",
+      "link": "/Iframe/slope",
+      "image": "./img/slope.webp"
+    },
+    {
+      "text": "Snowrider 3D",
+      "link": "/Iframe/snowride",
+      "image": "./img/snowride.webp"
+    },
+    {
+      "text": "Stack Ball",
+      "link": "/Iframe/stack-ball",
+      "image": "./img/stack-ball.webp"
+    },
+    {
+      "text": "Stick Slasher",
+      "link": "/Iframe/stickslasher",
+      "image": "./img/stickslasher.webp"
+    },
+    {
+      "text": "Temple Run 2",
+      "link": "/Iframe/temple2",
+      "image": "./img/temple-run.webp"
+    },
+    {
+      "text": "Tiny Fishing",
+      "link": "/Iframe/tiny-fishing",
+      "image": "./img/tiny-fishing.webp"
+    },
+    {
+      "text": "Toss the Turtle",
+      "link": "/Iframe/tosstheturtle",
+      "image": "./img/tosstheturtle.webp"
+    },
+    {
+      "text": "Vex 3",
+      "link": "/Iframe/vex3",
+      "image": "./img/vex3.webp"
+    },
+    {
+      "text": "Vex 4",
+      "link": "/Iframe/vex4",
+      "image": "./img/vex4.webp"
+    },
+    {
+      "text": "Vex 5",
+      "link": "/Iframe/vex5",
+      "image": "./img/vex5.webp"
+    },
+    {
+      "text": "Vex 6",
+      "link": "/Iframe/vex6",
+      "image": "./img/vex6.webp"
+    },
+    {
+      "text": "Vex 7",
+      "link": "/Iframe/vex7",
+      "image": "./img/vex7.webp"
+    },
+    {
+      "text": "World's Hardest Game",
+      "link": "/Iframe/worlds-hardest-game",
+      "image": "./img/worlds-hardest-game.webp"
+    },
+    {
+      "text": "World's Hardest Game 2",
+      "link": "/Iframe/worlds-hardest-game-2",
+      "image": "./img/worlds-hardest-game.webp"
+    }
+  ]
+}
