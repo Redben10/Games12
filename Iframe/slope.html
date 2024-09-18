@@ -17,10 +17,6 @@
             display: flex;
             flex-direction: column;
         }
-        #full {
-            height: 10px;
-            height: 10px;
-        }
         .topbar {
             background-color: #222;
             padding: 20px;
@@ -41,7 +37,7 @@
             margin-top: 10px;
         }
 
-        .nav-button, .nav-button2 {
+        .nav-button {
             text-decoration: none;
             background-color: #333;
             border: none;
@@ -54,23 +50,19 @@
             transition: background-color 0.3s, transform 0.2s;
         }
 
-        .nav-button:hover, .nav-button2:hover {
+        .nav-button:hover {
             background-color: #555;
             transform: scale(1.05);
-        }
-
-        .nav-button2 {
-            background-color: #666;
         }
 
         .content {
             flex-grow: 1;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 20px;
+            position: relative; /* This ensures proper positioning */
         }
 
         .iframe-container {
@@ -85,7 +77,7 @@
             height: 100%;
             border: 2px solid #444;
             border-radius: 10px;
-            transition: width 0.3s, height 0.3s, position 0.3s;
+            transition: width 0.3s, height 0.3s;
         }
 
         .fullscreen-button {
@@ -118,7 +110,7 @@
     <div class="content">
         <div class="iframe-container">
             <iframe id="gameIframe" src="/Games/slope/" frameborder="0"></iframe>
-            <button class="fullscreen-button" onclick="toggleFullscreen()"><img src="/img/fullscreen.png" id="full"></button>
+            <button class="fullscreen-button" onclick="toggleFullscreen()"></button>
         </div>
     </div>
 
@@ -149,19 +141,22 @@
         document.addEventListener('fullscreenchange', () => {
             const iframe = document.getElementById('gameIframe');
             if (document.fullscreenElement) {
+                // When entering fullscreen, set iframe to fill the screen
                 iframe.style.position = 'fixed';
                 iframe.style.top = '0';
                 iframe.style.left = '0';
+                iframe.style.width = '100vw'; // Use viewport width
+                iframe.style.height = '100vh'; // Use viewport height
+            } else {
+                // Reset iframe styles when exiting fullscreen
+                iframe.style.position = '';
                 iframe.style.width = '100%';
                 iframe.style.height = '100%';
-            } else {
-                iframe.style.position = '';
-                iframe.style.width = '';
-                iframe.style.height = '';
             }
         });
     </script>
 </body>
 </html>
+
 
 
