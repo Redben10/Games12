@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Void's Games</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            height: 100vh; 
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #444;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .topbar h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #f5f5f5;
+        }
+
+        .nav-buttons {
+            margin-top: 10px;
+        }
+
+        .nav-button {
+            text-decoration: none;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 30px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .nav-button:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .iframe-container {
+            width: 80%;
+            height: 60vh;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #444;
+            border-radius: 10px;
+        }
+
+        .fullscreen-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 40px; 
+            height: 40px;
+            background-image: url('./img/fullscreen.png'); 
+            background-size: cover;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .fullscreen-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <h1>Void's Games</h1>
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button">Home</a>
+            <a href="games.html" class="nav-button">Games</a>
+            <a href="about.html" class="nav-button">About</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="iframe-container">
+            <iframe id="gameIframe" src="" frameborder="0"></iframe>
+            <button class="fullscreen-button" onclick="toggleFullscreen()"></button>
+        </div>
+    </div>
+
+    <script>
+        function getGameFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('game');
+        }
+
+        function setIframeSource(game) {
+            const iframe = document.getElementById('gameIframe');
+            const games = {
+                "Burrito Bison": "Games/BurritoBison.html",
+                "Subway Surfers": "Games/SubwaySurfers.html",
+                "Basketball Stars": "Games/BasketballStars.html",
+                "Bit Plane": "Games/BitPlane.html",
+                "Monkey Mart": "Games/MonkeyMart.html",
+                "Funny Shooter 2": "Games/FunnyShooter2.html",
+                "Impossible Quiz": "Games/ImpossibleQuiz.html",
+                "Jetpack Joyride": "Games/JetpackJoyride.html",
+                "Learn to Fly": "Games/LearnToFly.html",
+                "Learn to Fly 2": "Games/LearnToFly2.html",
+                "Moto X3M": "Games/MotoX3M.html",
+                "Moto X3M Pool": "Games/MotoX3MPool.html",
+                "Moto X3M Spooky": "Games/MotoX3MSpooky.html",
+                "Moto X3M Winter": "Games/MotoX3MWinter.html",
+                "Riddle School": "Games/RiddleSchool.html",
+                "Riddle School 2": "Games/RiddleSchool2.html",
+                "Riddle School 3": "Games/RiddleSchool3.html",
+                "Riddle School 4": "Games/RiddleSchool4.html",
+                "Riddle School 5": "Games/RiddleSchool5.html",
+                "Slope": "Games/Slope.html",
+                "Snowrider 3D": "Games/Snowrider3D.html",
+                "Stack Ball": "Games/StackBall.html",
+                "Stick Slasher": "Games/StickSlasher.html",
+                "Temple Run 2": "Games/TempleRun2.html",
+                "Tiny Fishing": "Games/TinyFishing.html",
+                "Toss the Turtle": "Games/TossTheTurtle.html",
+                "Vex 3": "Games/Vex3.html",
+                "Vex 4": "Games/Vex4.html",
+                "Vex 5": "Games/Vex5.html",
+                "Vex 6": "Games/Vex6.html",
+                "Vex 7": "Games/Vex7.html",
+                "World's Hardest Game": "Games/WorldsHardestGame.html",
+                "World's Hardest Game 2": "Games/WorldsHardestGame2.html"
+            };
+            iframe.src = games[game] || '';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const game = getGameFromURL();
+            setIframeSource(game);
+        });
+
+        function toggleFullscreen() {
+            const iframe = document.getElementById('gameIframe');
+            if (iframe.requestFullscreen) {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen(); 
+                } else {
+                    iframe.requestFullscreen(); 
+                }
+            } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                if (document.webkitFullscreenElement) {
+                    document.webkitExitFullscreen();
+                } else {
+                    iframe.webkitRequestFullscreen();
+                }
+            } else if (iframe.msRequestFullscreen) { /* IE11 */
+                if (document.msFullscreenElement) {
+                    document.msExitFullscreen();
+                } else {
+                    iframe.msRequestFullscreen();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
