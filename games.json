@@ -2,167 +2,200 @@
   "gameButtons": [
     {
       "text": "Burrito Bison",
-      "link": "/iframe/burritobision",
+      "link": "game.html?game=Burrito%20Bison",
+      "link2": "Games/BurritoBison.html",
       "image": "./img/burrito-bison-image.png"
     },
     {
       "text": "Subway Surfers",
-      "link": "/Iframe/subsurfers",
+      "link": "game.html?game=Subway%20Surfers",
+      "link2": "Games/SubwaySurfers.html",
       "image": "./img/subwaysurfers.png"
     },
     {
       "text": "Basketball Stars",
-      "link": "/Iframe/basketball-stars/",
+      "link": "game.html?game=Basketball%20Stars",
+      "link2": "Games/BasketballStars.html",
       "image": "/img/BAS.webp"
     },
     {
       "text": "Bit Plane",
-      "link": "/Iframe/Planes",
+      "link": "game.html?game=Bit%20Plane",
+      "link2": "Games/BitPlane.html",
       "image": "./img/plane.jpg"
     },
     {
       "text": "Monkey Mart",
-      "link": "/Iframe/monkey",
+      "link": "game.html?game=Monkey%20Mart",
+      "link2": "Games/MonkeyMart.html",
       "image": "./img/monkey.jpeg"
     },
     {
       "text": "Funny Shooter 2",
-      "link": "/Iframe/funnyshooter2",
+      "link": "game.html?game=Funny%20Shooter%202",
+      "link2": "Games/FunnyShooter2.html",
       "image": "./img/funnyshooter2.webp"
     },
     {
       "text": "Impossible Quiz",
-      "link": "/Iframe/impossiblequiz",
+      "link": "game.html?game=Impossible%20Quiz",
+      "link2": "Games/ImpossibleQuiz.html",
       "image": "./img/impossiblequiz.webp"
     },
     {
       "text": "Jetpack Joyride",
-      "link": "/Iframe/jetpack-joyride",
+      "link": "game.html?game=Jetpack%20Joyride",
+      "link2": "Games/JetpackJoyride.html",
       "image": "./img/jetpack-joyride.webp"
     },
     {
       "text": "Learn to Fly",
-      "link": "/Iframe/learntofly",
+      "link": "game.html?game=Learn%20to%20Fly",
+      "link2": "Games/LearnToFly.html",
       "image": "./img/learntofly.webp"
     },
     {
       "text": "Learn to Fly 2",
-      "link": "/Iframe/learntofly2",
+      "link": "game.html?game=Learn%20to%20Fly%202",
+      "link2": "Games/LearnToFly2.html",
       "image": "./img/learntofly2.webp"
     },
     {
       "text": "Moto X3M",
-      "link": "/Iframe/motox3m",
+      "link": "game.html?game=Moto%20X3M",
+      "link2": "Games/MotoX3M.html",
       "image": "./img/motox3m.webp"
     },
     {
       "text": "Moto X3M Pool",
-      "link": "/Iframe/motoxpool",
+      "link": "game.html?game=Moto%20X3M%20Pool",
+      "link2": "Games/MotoX3MPool.html",
       "image": "./img/motoxpool.webp"
     },
     {
       "text": "Moto X3M Spooky",
-      "link": "/Iframe/moto-spook",
+      "link": "game.html?game=Moto%20X3M%20Spooky",
+      "link2": "Games/MotoX3MSpooky.html",
       "image": "./img/moto-spook.webp"
     },
     {
       "text": "Moto X3M Winter",
-      "link": "/Iframe/motoxpool",
+      "link": "game.html?game=Moto%20X3M%20Winter",
+      "link2": "Games/MotoX3MWinter.html",
       "image": "./img/motox3m-winter.webp"
     },
     {
       "text": "Riddle School",
-      "link": "/Iframe/riddleschool",
+      "link": "game.html?game=Riddle%20School",
+      "link2": "Games/RiddleSchool.html",
       "image": "./img/riddleschool.webp"
     },
     {
       "text": "Riddle School 2",
-      "link": "/Iframe/riddleschool2",
+      "link": "game.html?game=Riddle%20School%202",
+      "link2": "Games/RiddleSchool2.html",
       "image": "./img/riddleschool.webp"
     },
     {
       "text": "Riddle School 3",
-      "link": "/Iframe/riddleschool3",
+      "link": "game.html?game=Riddle%20School%203",
+      "link2": "Games/RiddleSchool3.html",
       "image": "./img/riddleschool.webp"
     },
     {
       "text": "Riddle School 4",
-      "link": "/Iframe/riddleschool4",
+      "link": "game.html?game=Riddle%20School%204",
+      "link2": "Games/RiddleSchool4.html",
       "image": "./img/riddleschool.webp"
     },
     {
       "text": "Riddle School 5",
-      "link": "/Iframe/riddleschool5",
+      "link": "game.html?game=Riddle%20School%205",
+      "link2": "Games/RiddleSchool5.html",
       "image": "./img/riddleschool.webp"
     },
     {
       "text": "Slope",
-      "link": "/Iframe/slope",
+      "link": "game.html?game=Slope",
+      "link2": "Games/Slope.html",
       "image": "./img/slope.webp"
     },
     {
       "text": "Snowrider 3D",
-      "link": "/Iframe/snowride",
+      "link": "game.html?game=Snowrider%203D",
+      "link2": "Games/Snowrider3D.html",
       "image": "./img/snowride.webp"
     },
     {
       "text": "Stack Ball",
-      "link": "/Iframe/stack-ball",
+      "link": "game.html?game=Stack%20Ball",
+      "link2": "Games/StackBall.html",
       "image": "./img/stack-ball.webp"
     },
     {
       "text": "Stick Slasher",
-      "link": "/Iframe/stickslasher",
+      "link": "game.html?game=Stick%20Slasher",
+      "link2": "Games/StickSlasher.html",
       "image": "./img/stickslasher.webp"
     },
     {
       "text": "Temple Run 2",
-      "link": "/Iframe/temple2",
+      "link": "game.html?game=Temple%20Run%202",
+      "link2": "Games/TempleRun2.html",
       "image": "./img/temple-run.webp"
     },
     {
       "text": "Tiny Fishing",
-      "link": "/Iframe/tiny-fishing",
+      "link": "game.html?game=Tiny%20Fishing",
+      "link2": "Games/TinyFishing.html",
       "image": "./img/tiny-fishing.webp"
     },
     {
       "text": "Toss the Turtle",
-      "link": "/Iframe/tosstheturtle",
+      "link": "game.html?game=Toss%20the%20Turtle",
+      "link2": "Games/TossTheTurtle.html",
       "image": "./img/tosstheturtle.webp"
     },
     {
       "text": "Vex 3",
-      "link": "/Iframe/vex3",
+      "link": "game.html?game=Vex%203",
+      "link2": "Games/Vex3.html",
       "image": "./img/vex3.webp"
     },
     {
       "text": "Vex 4",
-      "link": "/Iframe/vex4",
+      "link": "game.html?game=Vex%204",
+      "link2": "Games/Vex4.html",
       "image": "./img/vex4.webp"
     },
     {
       "text": "Vex 5",
-      "link": "/Iframe/vex5",
+      "link": "game.html?game=Vex%205",
+      "link2": "Games/Vex5.html",
       "image": "./img/vex5.webp"
     },
     {
       "text": "Vex 6",
-      "link": "/Iframe/vex6",
+      "link": "game.html?game=Vex%206",
+      "link2": "Games/Vex6.html",
       "image": "./img/vex6.webp"
     },
     {
       "text": "Vex 7",
-      "link": "/Iframe/vex7",
+      "link": "game.html?game=Vex%207",
+      "link2": "Games/Vex7.html",
       "image": "./img/vex7.webp"
     },
     {
       "text": "World's Hardest Game",
-      "link": "/Iframe/worlds-hardest-game",
+      "link": "game.html?game=World's%20Hardest%20Game",
+      "link2": "Games/WorldsHardestGame.html",
       "image": "./img/worlds-hardest-game.webp"
     },
     {
       "text": "World's Hardest Game 2",
-      "link": "/Iframe/worlds-hardest-game-2",
+      "link": "game.html?game=World's%20Hardest%20Game%202",
+      "link2": "Games/WorldsHardestGame2.html",
       "image": "./img/worlds-hardest-game.webp"
     }
   ]
