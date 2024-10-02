@@ -6,7 +6,93 @@
     <title>Void's Games</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Your existing styles here */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            height: 100vh; 
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #444;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .topbar h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #f5f5f5;
+        }
+
+        .nav-buttons {
+            margin-top: 10px;
+        }
+
+        .nav-button {
+            text-decoration: none;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 30px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .nav-button:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .iframe-container {
+            width: 80%;
+            height: 60vh;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #444;
+            border-radius: 10px;
+        }
+
+        .fullscreen-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 40px; 
+            height: 40px;
+            background-image: url('./img/fullscreen.png'); 
+            background-size: cover;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .fullscreen-button:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
