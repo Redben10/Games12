@@ -15,7 +15,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            overflow-y: auto; /* Allow vertical scrolling */
+            overflow: hidden; /* Prevents any overflow */
+            min-height: 100vh; /* Ensures body takes up full height */
         }
 
         a {
@@ -74,8 +75,7 @@
             padding: 40px;
             text-align: center;
             background-color: #1a1a1a;
-            max-height: calc(100vh - 150px); /* Adjust height according to your topbar and footer */
-            overflow-y: auto; /* Allows scrolling within this section if needed */
+            overflow: hidden; /* Prevents overflow */
         }
 
         .content p {
@@ -86,8 +86,9 @@
         #icon {
             display: block;
             margin: 20px auto;
-            width: 250px;
-            height: 250px;
+            width: 70%; /* Responsive width */
+            max-width: 250px; /* Max width */
+            height: auto; /* Height auto for responsiveness */
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
@@ -123,7 +124,7 @@
 
         .featured-games h2 {
             font-size: 2.2em;
-            margin-bottom: 100%;
+            margin-bottom: 10px; /* Reduced margin to prevent overflow */
         }
 
         .game-grid {
@@ -133,10 +134,10 @@
         }
 
         .game-card {
-            width: 200px; 
-            height: 200px; 
+            width: calc(33.333% - 10px); /* Responsive width */
+            height: auto; 
             background-color: #333;
-            margin: 0; 
+            margin: 5px; /* Margin added for spacing */
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -195,13 +196,21 @@
             }
 
             #icon {
-                width: 200px;
-                height: 200px;
+                width: 80%; /* Adjusted for smaller screens */
             }
 
             .game-card {
-                width: 100%; 
-                height: auto; 
+                width: calc(50% - 10px); /* 2 cards per row on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-card {
+                width: 100%; /* Full width for mobile */
+            }
+
+            .topbar h1 {
+                font-size: 2em; /* Responsive font size */
             }
         }
     </style>
