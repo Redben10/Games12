@@ -37,6 +37,12 @@
       "image": "./img/plane.jpg"
     },
     {
+      "text": "Bit Life",
+      "link": "game.html?game=Bit%20Life",
+      "link2": "Games/bitlife.html",
+      "image": "./Games/bitlife/logo.png"
+    },
+    {
       "text": "Monkey Mart",
       "link": "game.html?game=Monkey%20Mart",
       "link2": "Games/monkey.html",
