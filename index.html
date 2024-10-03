@@ -16,6 +16,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            max-width: 100vw; /* Prevent overflow */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
         }
         a {
             text-decoration: none;
@@ -70,7 +72,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: 5% 2%; /* Adjust padding to be responsive */
             text-align: center;
             background-color: #1a1a1a;
         }
@@ -114,7 +116,7 @@
 
         .featured-games {
             background-color: #1a1a1a;
-            padding: 40px;
+            padding: 5% 2%; /* Adjust padding to be responsive */
             text-align: center;
         }
 
@@ -127,6 +129,7 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            margin: 0 -5px; /* Negative margin to offset child margins */
         }
 
         .game-card {
@@ -134,7 +137,7 @@
             max-width: 200px;
             height: auto;
             background-color: #333;
-            margin: 20px;
+            margin: 10px; /* Keep some margin but control overall width */
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -187,9 +190,13 @@
         }
 
         @media (max-width: 768px) {
+            .content {
+                padding: 5% 5%; /* Adjust padding */
+            }
+
             .play-button {
-                padding: 15px 30px;
-                font-size: 1.5em;
+                padding: 10px 20px; /* Smaller buttons on mobile */
+                font-size: 1.2em; /* Adjust font size */
             }
 
             #icon {
@@ -211,21 +218,21 @@
 
         @media (max-width: 480px) {
             .topbar h1 {
-                font-size: 1.8em;
-            }
-
-            .play-button {
-                font-size: 1.2em;
-                padding: 10px 20px;
+                font-size: 1.5em; /* Smaller font size */
             }
 
             .nav-button, .nav-button2 {
-                padding: 8px 16px;
-                font-size: 0.9em;
+                padding: 8px 12px; /* Adjust padding for smaller screens */
+                font-size: 0.8em; /* Smaller font size */
+            }
+
+            .play-button {
+                font-size: 1em; /* Smaller font size for buttons */
+                padding: 10px 15px; /* Smaller padding */
             }
 
             .game-card h3 {
-                font-size: 1.2em;
+                font-size: 1.2em; /* Smaller game title */
             }
         }
     </style>
