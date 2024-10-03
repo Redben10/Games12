@@ -12,8 +12,8 @@
             color: #f5f5f5;
             margin: 0;
             padding: 0;
-            height: 100vh; 
-            overflow: hidden; 
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
         }
@@ -33,7 +33,7 @@
             font-size: 2.5em;
             color: #f5f5f5;
         }
-        
+
         .nav-buttons {
             margin-top: 10px;
         }
@@ -59,14 +59,15 @@
         .nav-button2 {
             background-color: #666;
         }
+
         .content {
             display: flex;
-            flex-wrap: wrap; 
-            justify-content: center; 
+            flex-wrap: wrap;
+            justify-content: center;
             padding: 20px;
-            gap: 30px; 
-            flex-grow: 1; 
-            overflow-y: auto; 
+            gap: 40px; /* Increased gap for better spacing */
+            flex-grow: 1;
+            overflow-y: auto;
         }
 
         .game-button {
@@ -75,46 +76,48 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: transform 0.2s;
+            transition: transform 0.3s;
         }
 
         .game-button:hover {
-            transform: translateY(-5px); 
+            transform: translateY(-10px); /* Increased hover effect */
         }
 
         .image-container {
             position: relative;
             display: inline-block;
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Larger shadow for a stronger effect */
         }
 
         .image-container img {
-            width: 150px; 
+            width: 200px; /* Increased image size */
             height: auto;
             border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); 
-            transition: transform 0.2s;
+            transition: transform 0.3s;
         }
 
         .image-container:hover img {
-            transform: scale(1.05); 
+            transform: scale(1.1); /* Stronger hover effect */
         }
 
         .tooltip {
             visibility: hidden;
-            width: 150px;
-            background-color: rgba(34, 34, 34, 0.8); 
+            width: 200px; /* Adjusted for larger images */
+            background-color: rgba(34, 34, 34, 0.85);
             color: #fff;
             text-align: center;
             border-radius: 10px;
-            padding: 5px;
+            padding: 10px;
             position: absolute;
-            bottom: 5px; 
+            bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s;
-            font-size: 0.8em;
+            font-size: 1em; /* Slightly larger text for readability */
         }
 
         .image-container:hover .tooltip {
