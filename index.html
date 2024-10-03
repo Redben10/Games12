@@ -142,8 +142,10 @@
         }
 
         .game-card img {
-            width: 8px;
+            width: 100%; /* Make images responsive */
+            max-height: 150px; /* Set a maximum height for images */
             border-radius: 10px;
+            object-fit: cover; /* Maintain aspect ratio */
         }
 
         .game-card h3 {
@@ -215,18 +217,21 @@
             <div class="game-card">
                 <a href="./Games/game.html?game=Monkey%20Mart">
                     <img src="./img/monkey.jpeg" alt="Game 1">
+                    <h3>Monkey Mart</h3>
                     <p>Play as a monkey making a store</p>
                 </a>
             </div>
             <div class="game-card">
                 <a href="./Games/game.html?game=Bit%20Plane">
                     <img src="./img/plane.jpg" alt="Game 2">
+                    <h3>Bit Plane</h3>
                     <p>Play an awesome plane fighting game</p>
                 </a>
             </div>
             <div class="game-card">
                 <a href="./game.html?game=Subway%20Surfers">
                     <img src="./img/subwaysurfers.png" alt="Game 3">
+                    <h3>Subway Surfers</h3>
                     <p>Play Subway Surfers!</p>
                 </a>
             </div>
