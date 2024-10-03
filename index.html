@@ -6,21 +6,23 @@
     <title>Void's Games</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        a {
-            text-decoration: none;
-            color: inherit;
+        html, body {
+            height: 100%; /* Ensure html and body take full height */
         }
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a;
+            background: #1a1a1a;
             color: #f5f5f5;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .topbar {
@@ -56,7 +58,7 @@
             transition: background-color 0.3s, transform 0.2s;
         }
 
-        .nav-button:hover, .nav-button2:hover {
+        .nav-button:hover {
             background-color: #555;
             transform: scale(1.05);
         }
@@ -66,18 +68,19 @@
         }
 
         .content {
-            flex-grow: 1;
+            flex-grow: 1; /* Allow content to grow and fill available space */
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: center; /* Center content vertically */
+            padding: 40px;
             text-align: center;
-            padding: 20px;
+            background-color: #1a1a1a;
         }
 
         .content p {
             font-size: 1.5em;
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
         #icon {
@@ -120,27 +123,27 @@
 
         .featured-games h2 {
             font-size: 2.2em;
-            margin-bottom: 100%;
+            margin-bottom: 30px;
         }
 
         .game-grid {
-            display: flex; 
-            justify-content: center; 
-            flex-wrap: wrap; 
+            display: flex; /* Changed to flexbox */
+            justify-content: center; /* Center items */
+            flex-wrap: wrap; /* Allow wrapping */
         }
 
         .game-card {
-            width: 200px; 
-            height: 200px; 
+            width: 200px; /* Set a fixed width */
+            height: 200px; /* Set a fixed height to make it square */
             background-color: #333;
-            margin: 0; 
+            margin: 20px; /* Add margin for spacing */
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; 
+            align-items: center; /* Center align content */
         }
 
         .game-card:hover {
@@ -148,15 +151,15 @@
         }
 
         .game-card img {
-            width: 100%; 
-            height: auto; 
-            max-height: 150px; 
+            width: 100%; /* Make images fill the card */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 150px; /* Set a maximum height for images */
             border-radius: 10px;
-            object-fit: cover; 
+            object-fit: cover; /* Maintain aspect ratio */
         }
 
         .game-card h3 {
-            margin: 10px 0; 
+            margin: 10px 0; /* Adjusted margin for titles */
             font-size: 1.5em;
         }
 
@@ -166,7 +169,7 @@
             background-color: #333;
             color: #fff;
             padding: 8px 12px; 
-            font-size: 1em; 
+            font-size: 1em;
             border-radius: 15px;
             transition: background-color 0.3s, transform 0.2s;
             text-align: center;
@@ -197,8 +200,8 @@
             }
 
             .game-card {
-                width: 100%; 
-                height: auto; 
+                width: 100%; /* Make game cards responsive on smaller screens */
+                height: auto; /* Allow height to adjust */
             }
         }
     </style>
@@ -228,14 +231,14 @@
         <h2>Featured Games</h2>
         <div class="game-grid">
             <div class="game-card">
-                <a href="./Games/game.html?game=Monkey%20Mart">
+                <a href="./game.html?game=Monkey%20Mart">
                     <img src="./img/monkey.jpeg" alt="Game 1">
                     <h3>Monkey Mart</h3>
                     <p>Play as a monkey making a store</p>
                 </a>
             </div>
             <div class="game-card">
-                <a href="./Games/game.html?game=Bit%20Plane">
+                <a href="./game.html?game=Bit%20Plane">
                     <img src="./img/plane.jpg" alt="Game 2">
                     <h3>Bit Plane</h3>
                     <p>Play an awesome plane fighting game</p>
@@ -243,9 +246,9 @@
             </div>
             <div class="game-card">
                 <a href="./game.html?game=Subway%20Surfers">
-                    <img src="./img/subwaysurfers.png" alt="Game 3">
+                    <img src="./img/other.jpeg" alt="Game 3">
                     <h3>Subway Surfers</h3>
-                    <p>Play Subway Surfers!</p>
+                    <p>Play the mobile game Subway Surfers!</p>
                 </a>
             </div>
         </div>
@@ -255,4 +258,3 @@
     </div>
 </body>
 </html>
-
