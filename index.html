@@ -8,19 +8,19 @@
     <style>
         html, body {
             overflow: hidden; /* Prevent scrolling */
+            height: 100vh; /* Make sure the body fits the viewport height */
+            margin: 0;
+            padding: 0;
         }
 
         body {
             font-family: 'Arial', sans-serif;
             background: #1a1a1a;
             color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
+
         a {
             text-decoration: none;
             color: inherit;
@@ -34,6 +34,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            flex-shrink: 0;
         }
 
         .topbar h1 {
@@ -74,7 +75,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: 5vh 2vw; /* Use viewport units for responsive padding */
             text-align: center;
             background-color: #1a1a1a;
         }
@@ -86,9 +87,8 @@
 
         #icon {
             display: block;
-            margin: 20px auto;
-            width: 250px;
-            height: 250px;
+            width: 20vw; /* Responsive width */
+            height: 20vw; /* Keep it square using the same value for width/height */
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
@@ -128,23 +128,25 @@
         }
 
         .game-grid {
-            display: flex; /* Changed to flexbox */
-            justify-content: center; /* Center items */
-            flex-wrap: wrap; /* Allow wrapping */
+            display: flex; 
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .game-card {
-            width: 200px; /* Set a fixed width */
-            height: 200px; /* Set a fixed height to make it square */
+            width: 20vw; /* Use viewport units for scaling */
+            height: 20vw;
+            max-width: 200px; /* Set a max size */
+            max-height: 200px;
             background-color: #333;
-            margin: 20px; /* Add margin for spacing */
+            margin: 20px;
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; /* Center align content */
+            align-items: center;
         }
 
         .game-card:hover {
@@ -152,15 +154,15 @@
         }
 
         .game-card img {
-            width: 100%; /* Make images fill the card */
-            height: auto; /* Maintain aspect ratio */
-            max-height: 150px; /* Set a maximum height for images */
+            width: 100%;
+            height: auto;
+            max-height: 150px;
             border-radius: 10px;
-            object-fit: cover; /* Maintain aspect ratio */
+            object-fit: cover;
         }
 
         .game-card h3 {
-            margin: 10px 0; /* Adjusted margin for titles */
+            margin: 10px 0;
             font-size: 1.5em;
         }
 
@@ -169,12 +171,12 @@
             text-decoration: none;
             background-color: #333;
             color: #fff;
-            padding: 8px 12px; /* Smaller padding */
-            font-size: 1em; /* Smaller font size */
+            padding: 8px 12px;
+            font-size: 1em;
             border-radius: 15px;
             transition: background-color 0.3s, transform 0.2s;
             text-align: center;
-            width: 100%; /* Make link fill the card */
+            width: 100%;
         }
 
         .game-card a:hover {
@@ -187,22 +189,23 @@
             text-align: center;
             padding: 20px;
             color: #aaa;
+            flex-shrink: 0;
         }
 
         @media (max-width: 768px) {
             .play-button {
-                padding: 15px 30px;
+                padding: 10px 15px;
                 font-size: 1.5em;
             }
 
             #icon {
-                width: 200px;
-                height: 200px;
+                width: 30vw;
+                height: 30vw;
             }
 
             .game-card {
-                width: 100%; /* Make game cards responsive on smaller screens */
-                height: auto; /* Allow height to adjust */
+                width: 40vw;
+                height: auto;
             }
         }
     </style>
