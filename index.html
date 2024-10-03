@@ -14,7 +14,8 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            justify-content: space-between;
+            overflow-y: auto; /* Allow vertical scrolling */
         }
 
         a {
@@ -24,7 +25,7 @@
 
         .topbar {
             background-color: #222;
-            padding: 10px;
+            padding: 20px;
             text-align: center;
             border-bottom: 2px solid #444;
             position: sticky;
@@ -34,21 +35,21 @@
 
         .topbar h1 {
             margin: 0;
-            font-size: 2em;
+            font-size: 2.5em;
+            color: #f5f5f5;
         }
 
         .nav-buttons {
-            display: flex; /* Use flexbox for alignment */
-            justify-content: center; /* Center buttons */
-            margin: 10px 0; /* Space around the buttons */
-            flex-wrap: wrap; /* Allow buttons to wrap */
+            margin-top: 10px;
         }
 
         .nav-button, .nav-button2 {
+            text-decoration: none;
             background-color: #333;
+            border: none;
             color: #fff;
-            padding: 10px 15px; 
-            margin: 5px; 
+            padding: 10px 20px;
+            margin: 5px;
             cursor: pointer;
             font-size: 1em;
             border-radius: 30px;
@@ -70,37 +71,40 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 40px;
             text-align: center;
-            overflow: hidden; /* Prevent overflow */
+            background-color: #1a1a1a;
+            max-height: 100%; /* Adjust height according to your topbar and footer */
+            overflow-y: auto; /* Allows scrolling within this section if needed */
         }
 
         .content p {
             font-size: 1.5em;
-            margin: 5px 0; 
+            margin: 10px 0;
         }
 
         #icon {
             display: block;
-            margin: 10px auto;
-            width: 70%; 
-            max-width: 250px; 
-            height: auto; 
+            margin: 20px auto;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
         .play-button-container {
-            margin: 20px 0; 
-            display: flex; /* Center the play button */
-            justify-content: center; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
         }
 
         .play-button {
+            text-decoration: none;
             background: linear-gradient(145deg, #28a745, #218838);
             color: #fff;
             padding: 10px 20px;
-            font-size: 1.5em;
+            font-size: 2em;
             border-radius: 50px;
             border: 2px solid #1e7e34;
             transition: background 0.3s, transform 0.2s;
@@ -112,25 +116,27 @@
         }
 
         .featured-games {
-            padding: 20px; 
+            background-color: #1a1a1a;
+            padding: 40px;
             text-align: center;
         }
 
         .featured-games h2 {
-            font-size: 2em;
-            margin-bottom: 20px; 
+            font-size: 2.2em;
+            margin-bottom: 100%;
         }
 
         .game-grid {
             display: flex; 
             justify-content: center; 
             flex-wrap: wrap; 
-            gap: 10px; 
         }
 
         .game-card {
-            width: calc(33.333% - 20px); 
+            width: 200px; 
+            height: 200px; 
             background-color: #333;
+            margin: 0; 
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -158,9 +164,12 @@
         }
 
         .game-card a {
+            display: block;
+            text-decoration: none;
             background-color: #333;
             color: #fff;
             padding: 8px 12px; 
+            font-size: 1em; 
             border-radius: 15px;
             transition: background-color 0.3s, transform 0.2s;
             text-align: center;
@@ -181,30 +190,18 @@
 
         @media (max-width: 768px) {
             .play-button {
-                padding: 10px 15px;
-                font-size: 1.2em;
+                padding: 15px 30px;
+                font-size: 1.5em;
             }
 
             #icon {
-                width: 80%; 
+                width: 200px;
+                height: 200px;
             }
 
-            .game-card {
-                width: calc(50% - 10px); 
-            }
-        }
-
-        @media (max-width: 480px) {
             .game-card {
                 width: 100%; 
-            }
-
-            .topbar h1 {
-                font-size: 1.5em; 
-            }
-
-            .content p {
-                font-size: 1.2em; 
+                height: auto; 
             }
         }
     </style>
@@ -258,7 +255,7 @@
     </div>
 
     <div class="footer">
-        &copy; 2024 Void's Games
     </div>
 </body>
 </html>
+
