@@ -12,11 +12,12 @@
             color: #f5f5f5;
             margin: 0;
             padding: 0;
-            height: 100%;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
+
         a {
             text-decoration: none;
             color: inherit;
@@ -43,9 +44,7 @@
         }
 
         .nav-button, .nav-button2 {
-            text-decoration: none;
             background-color: #333;
-            border: none;
             color: #fff;
             padding: 10px 20px;
             margin: 5px;
@@ -53,6 +52,7 @@
             font-size: 1em;
             border-radius: 30px;
             transition: background-color 0.3s, transform 0.2s;
+            border: none; /* Add border here for consistency */
         }
 
         .nav-button:hover {
@@ -72,7 +72,6 @@
             justify-content: center;
             padding: 40px;
             text-align: center;
-            background-color: #1a1a1a;
         }
 
         .content p {
@@ -81,23 +80,18 @@
         }
 
         #icon {
-            display: block;
-            margin: 20px auto;
             width: 250px;
             height: 250px;
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
         }
 
         .play-button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin: 30px 0;
         }
 
         .play-button {
-            text-decoration: none;
             background: linear-gradient(145deg, #28a745, #218838);
             color: #fff;
             padding: 10px 20px;
@@ -124,23 +118,23 @@
         }
 
         .game-grid {
-            display: flex; 
-            justify-content: center; 
-            flex-wrap: wrap; 
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .game-card {
-            width: 200px; 
-            height: 200px; 
+            width: 200px;
+            height: 200px;
             background-color: #333;
-            margin: 0; 
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; 
+            align-items: center;
+            margin: 10px; /* Add margin between cards */
         }
 
         .game-card:hover {
@@ -148,29 +142,27 @@
         }
 
         .game-card img {
-            width: 100%; 
-            height: auto; 
-            max-height: 150px; 
+            width: 100%;
+            max-height: 150px;
             border-radius: 10px;
-            object-fit: cover; 
+            object-fit: cover;
         }
 
         .game-card h3 {
-            margin: 10px 0; 
+            margin: 10px 0;
             font-size: 1.5em;
         }
 
         .game-card a {
             display: block;
-            text-decoration: none;
             background-color: #333;
             color: #fff;
-            padding: 8px 12px; 
-            font-size: 1em; 
+            padding: 8px 12px;
+            font-size: 1em;
             border-radius: 15px;
             transition: background-color 0.3s, transform 0.2s;
             text-align: center;
-            width: 100%; 
+            width: 100%;
         }
 
         .game-card a:hover {
@@ -178,6 +170,12 @@
             transform: scale(1.05);
         }
 
+        .footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 20px;
+            color: #aaa;
+        }
 
         @media (max-width: 768px) {
             .play-button {
@@ -191,8 +189,8 @@
             }
 
             .game-card {
-                width: 100%; 
-                height: auto; 
+                width: 100%;
+                height: auto;
             }
         }
     </style>
@@ -207,12 +205,12 @@
         </div>
     </div>
     
-    <main class="content">
+    <div class="content">
         <p>Hey, what is this website?</p>
         <p>This is a simple game website to have fun.</p>
         <p>It will be updated pretty often.</p>
-        <img src="./img/icons.png" id="icon" alt="Game Icon representing Void's Games">
-    </main>
+        <img src="./img/icons.png" id="icon" alt="Game Icon">
+    </div>
 
     <div class="play-button-container">
         <a href="./Games.html" class="play-button">Play</a>
@@ -223,21 +221,21 @@
         <div class="game-grid">
             <div class="game-card">
                 <a href="./Games/game.html?game=Monkey%20Mart">
-                    <img src="./img/monkey.jpeg" alt="Game 1: Monkey Mart">
+                    <img src="./img/monkey.jpeg" alt="Game 1">
                     <h3>Monkey Mart</h3>
                     <p>Play as a monkey making a store</p>
                 </a>
             </div>
             <div class="game-card">
                 <a href="./Games/game.html?game=Bit%20Plane">
-                    <img src="./img/plane.jpg" alt="Game 2: Bit Plane">
+                    <img src="./img/plane.jpg" alt="Game 2">
                     <h3>Bit Plane</h3>
                     <p>Play an awesome plane fighting game</p>
                 </a>
             </div>
             <div class="game-card">
                 <a href="./Games/game.html?game=Subway%20Surfers">
-                    <img src="./img/subwaysurfers.png" alt="Game 3: Subway Surfers">
+                    <img src="./img/subwaysurfers.png" alt="Game 3">
                     <h3>Subway Surfers</h3>
                     <p>Play Subway Surfers!</p>
                 </a>
@@ -245,7 +243,8 @@
         </div>
     </div>
 
-    <footer class="footer">
-    </footer>
+    <div class="footer">
+        <p>&copy; 2024 Void's Games. All rights reserved.</p>
+    </div>
 </body>
 </html>
