@@ -6,6 +6,10 @@
     <title>Void's Games</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        html, body {
+            overflow: hidden; /* Prevent scrolling */
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             background: #1a1a1a;
@@ -124,22 +128,23 @@
         }
 
         .game-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            display: flex; /* Changed to flexbox */
+            justify-content: center; /* Center items */
+            flex-wrap: wrap; /* Allow wrapping */
         }
 
         .game-card {
-            width: calc(33% - 40px); /* Responsive width */
-            margin: 20px;
+            width: 200px; /* Set a fixed width */
+            height: 200px; /* Set a fixed height to make it square */
             background-color: #333;
+            margin: 20px; /* Add margin for spacing */
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: center; /* Center align content */
         }
 
         .game-card:hover {
@@ -147,15 +152,15 @@
         }
 
         .game-card img {
-            width: 100%;
-            height: auto;
-            max-height: 150px;
+            width: 100%; /* Make images fill the card */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 150px; /* Set a maximum height for images */
             border-radius: 10px;
-            object-fit: cover;
+            object-fit: cover; /* Maintain aspect ratio */
         }
 
         .game-card h3 {
-            margin: 10px 0;
+            margin: 10px 0; /* Adjusted margin for titles */
             font-size: 1.5em;
         }
 
@@ -164,12 +169,12 @@
             text-decoration: none;
             background-color: #333;
             color: #fff;
-            padding: 8px 12px;
-            font-size: 1em;
+            padding: 8px 12px; /* Smaller padding */
+            font-size: 1em; /* Smaller font size */
             border-radius: 15px;
             transition: background-color 0.3s, transform 0.2s;
             text-align: center;
-            width: 100%;
+            width: 100%; /* Make link fill the card */
         }
 
         .game-card a:hover {
@@ -184,12 +189,6 @@
             color: #aaa;
         }
 
-        @media (max-width: 1024px) {
-            .game-card {
-                width: calc(50% - 40px);
-            }
-        }
-
         @media (max-width: 768px) {
             .play-button {
                 padding: 15px 30px;
@@ -202,8 +201,8 @@
             }
 
             .game-card {
-                width: 100%;
-                height: auto;
+                width: 100%; /* Make game cards responsive on smaller screens */
+                height: auto; /* Allow height to adjust */
             }
         }
     </style>
