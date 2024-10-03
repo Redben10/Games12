@@ -19,6 +19,12 @@
       "image": "/img/Retro.png"
     },
     {
+      "text": "idle breakout",
+      "link": "game.html?game=idle%20breakout",
+      "link2": "Games/idle-breakout",
+      "image": "/img/idle.png"
+    },
+    {
       "text": "Basketball Stars",
       "link": "game.html?game=Basketball%20Stars",
       "link2": "Games/basketball-stars.html",
