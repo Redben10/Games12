@@ -131,7 +131,6 @@
             padding: 10px;
             text-align: center;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            color: #fff; /* Text color for better visibility */
         }
 
         .random-game img {
@@ -140,17 +139,6 @@
             border-radius: 5px;
             display: block;
             margin: 0 auto 5px auto; /* Center the image */
-        }
-
-        .random-game-text {
-            position: fixed;
-            bottom: 130px; /* Position above the random game box */
-            right: 20px;
-            background: rgba(51, 51, 51, 0.8);
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-            color: #fff; /* Text color for better visibility */
         }
 
         @media (max-width: 768px) {
@@ -193,11 +181,6 @@
     </div>
 
     <div class="footer">
-    </div>
-
-    <!-- Random game text above the box -->
-    <div class="random-game-text" style="display: none;">
-        This is one of the games you can play. Click now!!
     </div>
 
     <!-- Random game section -->
@@ -243,9 +226,8 @@
             document.getElementById('random-game-title').innerText = selectedGame.title;
             document.getElementById('random-game-description').innerText = selectedGame.description;
 
-            // Show the random game section and text
+            // Show the random game section
             document.getElementById('random-game').style.display = 'block';
-            document.querySelector('.random-game-text').style.display = 'block';
         }
 
         // Call the function when the page loads
