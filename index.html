@@ -121,6 +121,26 @@
             margin: 0; /* Ensure no extra margin */
         }
 
+        /* Style for the random game button */
+        .random-game {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .random-game img {
+            width: 100px; /* Adjust image size */
+            height: 100px; /* Adjust image size */
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto 5px auto; /* Center the image */
+        }
+
         @media (max-width: 768px) {
             .play-button {
                 padding: 15px 30px;
@@ -162,5 +182,56 @@
 
     <div class="footer">
     </div>
+
+    <!-- Random game section -->
+    <div id="random-game" class="random-game" style="display: none;">
+        <a id="random-game-link" href="#" target="_blank">
+            <img id="random-game-image" src="" alt="Random Game">
+            <h3 id="random-game-title"></h3>
+            <p id="random-game-description"></p>
+        </a>
+    </div>
+
+    <script>
+        // Array of games
+        const games = [
+            {
+                url: './Games/game.html?game=Monkey%20Mart',
+                image: './img/monkey.jpeg',
+                title: 'Monkey Mart',
+                description: 'Play as a monkey making a store'
+            },
+            {
+                url: './Games/game.html?game=Bit%20Plane',
+                image: './img/plane.jpg',
+                title: 'Bit Plane',
+                description: 'Play an awesome plane fighting game'
+            },
+            {
+                url: './Games/game.html?game=Subway%20Surfers',
+                image: './img/subwaysurfers.png',
+                title: 'Subway Surfers',
+                description: 'Play Subway Surfers!'
+            }
+        ];
+
+        // Function to randomly select a game
+        function selectRandomGame() {
+            const randomIndex = Math.floor(Math.random() * games.length);
+            const selectedGame = games[randomIndex];
+
+            // Update the random game section with selected game details
+            document.getElementById('random-game-link').href = selectedGame.url;
+            document.getElementById('random-game-image').src = selectedGame.image;
+            document.getElementById('random-game-title').innerText = selectedGame.title;
+            document.getElementById('random-game-description').innerText = selectedGame.description;
+
+            // Show the random game section
+            document.getElementById('random-game').style.display = 'block';
+        }
+
+        // Call the function when the page loads
+        window.onload = selectRandomGame;
+    </script>
 </body>
 </html>
