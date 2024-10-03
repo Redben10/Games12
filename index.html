@@ -24,7 +24,7 @@
 
         .topbar {
             background-color: #222;
-            padding: 20px;
+            padding: 10px;
             text-align: center;
             border-bottom: 2px solid #444;
             position: sticky;
@@ -34,18 +34,21 @@
 
         .topbar h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2em;
         }
 
         .nav-buttons {
             margin-top: 10px;
+            display: flex; /* Added flexbox for button alignment */
+            justify-content: center; /* Center the buttons */
+            flex-wrap: wrap; /* Wrap buttons on smaller screens */
         }
 
         .nav-button, .nav-button2 {
             background-color: #333;
             color: #fff;
-            padding: 10px 20px;
-            margin: 5px;
+            padding: 10px 15px; /* Reduced padding */
+            margin: 5px; /* Margin for spacing between buttons */
             cursor: pointer;
             font-size: 1em;
             border-radius: 30px;
@@ -195,7 +198,7 @@
             }
 
             .topbar h1 {
-                font-size: 2em; /* Responsive font size */
+                font-size: 1.5em; /* Responsive font size */
             }
 
             .content p {
