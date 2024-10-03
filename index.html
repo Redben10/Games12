@@ -17,7 +17,6 @@
             flex-direction: column;
             justify-content: space-between;
         }
-
         a {
             text-decoration: none;
             color: inherit;
@@ -44,7 +43,9 @@
         }
 
         .nav-button, .nav-button2 {
+            text-decoration: none;
             background-color: #333;
+            border: none;
             color: #fff;
             padding: 10px 20px;
             margin: 5px;
@@ -52,7 +53,6 @@
             font-size: 1em;
             border-radius: 30px;
             transition: background-color 0.3s, transform 0.2s;
-            border: none; /* Add border here for consistency */
         }
 
         .nav-button:hover {
@@ -72,6 +72,7 @@
             justify-content: center;
             padding: 40px;
             text-align: center;
+            background-color: #1a1a1a;
         }
 
         .content p {
@@ -80,18 +81,23 @@
         }
 
         #icon {
+            display: block;
+            margin: 20px auto;
             width: 250px;
             height: 250px;
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            margin: 20px auto;
         }
 
         .play-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin: 30px 0;
         }
 
         .play-button {
+            text-decoration: none;
             background: linear-gradient(145deg, #28a745, #218838);
             color: #fff;
             padding: 10px 20px;
@@ -118,23 +124,23 @@
         }
 
         .game-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            display: flex; /* Changed to flexbox */
+            justify-content: center; /* Center items */
+            flex-wrap: wrap; /* Allow wrapping */
         }
 
         .game-card {
-            width: 200px;
-            height: 200px;
+            width: 200px; /* Set a fixed width */
+            height: 200px; /* Set a fixed height to make it square */
             background-color: #333;
+            margin: 0; /* Remove margin */
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            margin: 10px; /* Add margin between cards */
+            align-items: center; /* Center align content */
         }
 
         .game-card:hover {
@@ -142,27 +148,29 @@
         }
 
         .game-card img {
-            width: 100%;
-            max-height: 150px;
+            width: 100%; /* Make images fill the card */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 150px; /* Set a maximum height for images */
             border-radius: 10px;
-            object-fit: cover;
+            object-fit: cover; /* Maintain aspect ratio */
         }
 
         .game-card h3 {
-            margin: 10px 0;
+            margin: 10px 0; /* Adjusted margin for titles */
             font-size: 1.5em;
         }
 
         .game-card a {
             display: block;
+            text-decoration: none;
             background-color: #333;
             color: #fff;
-            padding: 8px 12px;
-            font-size: 1em;
+            padding: 8px 12px; /* Smaller padding */
+            font-size: 1em; /* Smaller font size */
             border-radius: 15px;
             transition: background-color 0.3s, transform 0.2s;
             text-align: center;
-            width: 100%;
+            width: 100%; /* Make link fill the card */
         }
 
         .game-card a:hover {
@@ -189,8 +197,8 @@
             }
 
             .game-card {
-                width: 100%;
-                height: auto;
+                width: 100%; /* Make game cards responsive on smaller screens */
+                height: auto; /* Allow height to adjust */
             }
         }
     </style>
@@ -234,7 +242,7 @@
                 </a>
             </div>
             <div class="game-card">
-                <a href="./Games/game.html?game=Subway%20Surfers">
+                <a href="./game.html?game=Subway%20Surfers">
                     <img src="./img/subwaysurfers.png" alt="Game 3">
                     <h3>Subway Surfers</h3>
                     <p>Play Subway Surfers!</p>
@@ -244,7 +252,7 @@
     </div>
 
     <div class="footer">
-        <p>&copy; 2024 Void's Games. All rights reserved.</p>
     </div>
 </body>
 </html>
+fix this 
