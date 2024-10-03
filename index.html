@@ -8,18 +8,14 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: #1a1a1a;
+            background-color: #1a1a1a;
             color: #f5f5f5;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
+            height: 100vh; 
+            overflow: hidden; 
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
         }
 
         .topbar {
@@ -42,26 +38,21 @@
             margin-top: 10px;
         }
 
-        .nav-button, .nav-button2 {
+        .nav-button {
             text-decoration: none;
             background-color: #333;
-            border: none;
             color: #fff;
             padding: 10px 20px;
             margin: 5px;
-            cursor: pointer;
-            font-size: 1em;
             border-radius: 30px;
-            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
         }
 
         .nav-button:hover {
             background-color: #555;
             transform: scale(1.05);
-        }
-
-        .nav-button2 {
-            background-color: #666;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
         }
 
         .content {
@@ -70,101 +61,60 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px; /* Reduced padding */
             text-align: center;
-            background-color: #1a1a1a;
-            margin-bottom: 0; /* Remove bottom margin */
+            padding: 20px;
         }
 
-        .content p {
-            font-size: 1.5em;
-            margin: 5px 0; /* Reduced margin */
+        .iframe-container {
+            width: 80%;
+            height: 70vh;
+            position: relative;
+            background: linear-gradient(135deg, rgba(66, 245, 236, 0.3), rgba(255, 255, 255, 0.1));
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(66, 245, 236, 0.2);
+            overflow: hidden;
         }
 
-        #icon {
-            display: block;
-            margin: 10px auto; /* Reduced margin */
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 15px rgba(66, 245, 236, 0.5), 0 0 30px rgba(66, 245, 236, 0.5);
+            animation: glowing-border 3s infinite alternate;
         }
 
-        .play-button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 5px 0; /* Reduced margin */
+        @keyframes glowing-border {
+            0% {
+                box-shadow: 0 0 20px rgba(66, 245, 236, 0.7), 0 0 40px rgba(66, 245, 236, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 60px rgba(66, 245, 236, 1), 0 0 80px rgba(66, 245, 236, 0.8);
+            }
         }
 
-        .play-button {
-            text-decoration: none;
-            background: linear-gradient(145deg, #28a745, #218838);
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 2em;
-            border-radius: 50px;
-            border: 2px solid #1e7e34;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .play-button:hover {
-            background: linear-gradient(145deg, #218838, #28a745);
-            transform: translateY(-5px);
-        }
-
-        .footer {
-            background-color: #1a1a1a;
-            text-align: center;
-            padding: 10px; /* Reduced padding */
-            color: #aaa;
-            margin: 0; /* Ensure no extra margin */
-        }
-
-        /* Style for the random game button */
-        .random-game {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #333;
-            border-radius: 10px;
-            padding: 15px; /* Increased padding */
-            text-align: center;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            font-size: 1.2em; /* Increased font size */
-        }
-
-        .random-game h3 {
-            margin: 15px 0 10px; /* Adjusted margin for spacing */
-        }
-
-        .random-game p {
-            margin: 0; /* Adjusted margin for spacing */
-        }
-
-        .random-game img {
-            width: 200px; /* Adjust image size */
-            height: 200px; /* Adjust image size */
+        .fullscreen-button {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
+            background-image: url('./img/fullscreen.png');
+            background-size: cover;
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(66, 245, 236, 0.3);
             border-radius: 5px;
-            display: block;
-            margin: 0 auto 5px auto; /* Center the image */
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        @media (max-width: 768px) {
-            .play-button {
-                padding: 15px 30px;
-                font-size: 1.5em;
-            }
-
-            #icon {
-                width: 200px;
-                height: 200px;
-            }
-
-            .game-card {
-                width: 100%; /* Make game cards responsive on smaller screens */
-                height: auto; /* Allow height to adjust */
-            }
+        .fullscreen-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(66, 245, 236, 0.6);
         }
     </style>
 </head>
@@ -172,81 +122,63 @@
     <div class="topbar">
         <h1>Void's Games</h1>
         <div class="nav-buttons">
-            <a href="./" class="nav-button2">Home</a>
-            <a href="./Games.html" class="nav-button">Games</a>
-            <a href="./About.html" class="nav-button">About</a>
+            <a href="index.html" class="nav-button">Home</a>
+            <a href="games.html" class="nav-button">Games</a>
+            <a href="about.html" class="nav-button">About</a>
         </div>
     </div>
-    
     <div class="content">
-        <p>Hey, what is this website?</p>
-        <p>This is a simple game website to have fun.</p>
-        <p>It will be updated pretty often.</p>
-        <img src="./img/icons.png" id="icon" alt="Game Icon">
-    </div>
-
-    <div class="play-button-container">
-        <a href="./Games.html" class="play-button">Play</a>
-    </div>
-
-    <div class="footer">
-    </div>
-
-    <!-- Random game section -->
-    <div id="random-game" class="random-game" style="display: none;">
-        <a id="random-game-link" href="#" target="_blank">
-            <img id="random-game-image" src="" alt="Random Game">
-            <h3 id="random-game-title"></h3>
-            <p id="random-game-description"></p>
-        </a>
+        <div class="iframe-container">
+            <iframe id="gameIframe" src="" frameborder="0"></iframe>
+            <button class="fullscreen-button" onclick="toggleFullscreen()"></button>
+        </div>
     </div>
 
     <script>
-        // Array of games
-        const games = [
-            {
-                url: './game.html?game=Monkey%20Mart',
-                image: './img/monkey.jpeg',
-                title: 'Monkey Mart',
-                description: 'Play as a monkey making a store'
-            },
-            {
-                url: './game.html?game=Bit%20Plane',
-                image: './img/plane.jpg',
-                title: 'Bit Plane',
-                description: 'Play an awesome plane fighting game'
-            },
-            {
-                url: './game.html?game=Subway%20Surfers',
-                image: './img/subwaysurfers.png',
-                title: 'Subway Surfers',
-                description: 'Play Subway Surfers!'
-            },
-            {
-                "url": "game.html?game=Burrito%20Bison",
-                "image": "/img/burrito-bison-image.png",
-                "title": "Burrito Bison",
-                "description": "Play Burrito Bison today!!"
-    },
-        ];
-
-        // Function to randomly select a game
-        function selectRandomGame() {
-            const randomIndex = Math.floor(Math.random() * games.length);
-            const selectedGame = games[randomIndex];
-
-            // Update the random game section with selected game details
-            document.getElementById('random-game-link').href = selectedGame.url;
-            document.getElementById('random-game-image').src = selectedGame.image;
-            document.getElementById('random-game-title').innerText = selectedGame.title;
-            document.getElementById('random-game-description').innerText = selectedGame.description;
-
-            // Show the random game section
-            document.getElementById('random-game').style.display = 'block';
+        async function fetchGames() {
+            const response = await fetch('/games.json');
+            return await response.json();
         }
 
-        // Call the function when the page loads
-        window.onload = selectRandomGame;
+        function getGameFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('game');
+        }
+
+        async function setIframeSource() {
+            const game = getGameFromURL();
+            const gamesData = await fetchGames();
+            const gameEntry = gamesData.gameButtons.find(g => g.text === game);
+            const iframe = document.getElementById('gameIframe');
+            iframe.src = gameEntry ? gameEntry.link2 : '';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setIframeSource();
+        });
+
+        function toggleFullscreen() {
+            const iframe = document.getElementById('gameIframe');
+            if (iframe.requestFullscreen) {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen(); 
+                } else {
+                    iframe.requestFullscreen(); 
+                }
+            } else if (iframe.webkitRequestFullscreen) {
+                if (document.webkitFullscreenElement) {
+                    document.webkitExitFullscreen();
+                } else {
+                    iframe.webkitRequestFullscreen();
+                }
+            } else if (iframe.msRequestFullscreen) {
+                if (document.msFullscreenElement) {
+                    document.msExitFullscreen();
+                } else {
+                    iframe.msRequestFullscreen();
+                }
+            }
+        }
     </script>
 </body>
 </html>
