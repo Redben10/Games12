@@ -13,6 +13,12 @@
       "image": "./img/subwaysurfers.png"
     },
     {
+      "text": "Retro Bowl",
+      "link": "game.html?game=retro-bowl",
+      "link2": "Games/retro-bowl.html",
+      "image": "/img/Retro.png"
+    },
+    {
       "text": "Basketball Stars",
       "link": "game.html?game=Basketball%20Stars",
       "link2": "Games/basketball-stars.html",
