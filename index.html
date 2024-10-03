@@ -24,7 +24,7 @@
 
         .topbar {
             background-color: #222;
-            padding: 20px;
+            padding: 10px;
             text-align: center;
             border-bottom: 2px solid #444;
             position: sticky;
@@ -70,7 +70,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: 5% 2%; /* Use percentages for padding */
             text-align: center;
             background-color: #1a1a1a;
         }
@@ -83,8 +83,9 @@
         #icon {
             display: block;
             margin: 20px auto;
-            width: 250px;
-            height: 250px;
+            width: 25%; /* Use a percentage for width */
+            max-width: 250px; /* Set a max width */
+            height: auto; /* Maintain aspect ratio */
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
@@ -114,7 +115,7 @@
 
         .featured-games {
             background-color: #1a1a1a;
-            padding: 40px;
+            padding: 5% 2%; /* Use percentages for padding */
             text-align: center;
         }
 
@@ -124,23 +125,24 @@
         }
 
         .game-grid {
-            display: flex; /* Changed to flexbox */
-            justify-content: center; /* Center items */
-            flex-wrap: wrap; /* Allow wrapping */
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
         }
 
         .game-card {
-            width: 200px; /* Set a fixed width */
-            height: 200px; /* Set a fixed height to make it square */
+            width: 100%; /* Use percentage for width */
+            max-width: 200px; /* Set a max width */
+            height: auto; 
             background-color: #333;
-            margin: 20px; /* Add margin for spacing */
+            margin: 10px; 
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; /* Center align content */
+            align-items: center; 
         }
 
         .game-card:hover {
@@ -148,15 +150,15 @@
         }
 
         .game-card img {
-            width: 100%; /* Make images fill the card */
-            height: auto; /* Maintain aspect ratio */
-            max-height: 150px; /* Set a maximum height for images */
+            width: 100%; 
+            height: auto; 
+            max-height: 150px; 
             border-radius: 10px;
-            object-fit: cover; /* Maintain aspect ratio */
+            object-fit: cover; 
         }
 
         .game-card h3 {
-            margin: 10px 0; /* Adjusted margin for titles */
+            margin: 10px 0; 
             font-size: 1.5em;
         }
 
@@ -165,12 +167,12 @@
             text-decoration: none;
             background-color: #333;
             color: #fff;
-            padding: 8px 12px; /* Smaller padding */
-            font-size: 1em; /* Smaller font size */
+            padding: 8px 12px; 
+            font-size: 1em; 
             border-radius: 15px;
             transition: background-color 0.3s, transform 0.2s;
             text-align: center;
-            width: 100%; /* Make link fill the card */
+            width: 100%; 
         }
 
         .game-card a:hover {
@@ -192,13 +194,31 @@
             }
 
             #icon {
-                width: 200px;
-                height: 200px;
+                width: 50%; /* Adjust for smaller screens */
+                max-width: 200px;
             }
 
             .game-card {
-                width: 100%; /* Make game cards responsive on smaller screens */
-                height: auto; /* Allow height to adjust */
+                width: 80%; /* Make game cards responsive on smaller screens */
+            }
+
+            .nav-button, .nav-button2 {
+                font-size: 0.9em; /* Adjust button font size for smaller screens */
+                padding: 8px 15px; /* Adjust padding */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .topbar h1 {
+                font-size: 2em; /* Adjust title size for very small screens */
+            }
+
+            .nav-button, .nav-button2 {
+                font-size: 0.8em; /* Further adjust button font size */
+            }
+
+            .game-card h3 {
+                font-size: 1.2em; /* Smaller title size */
             }
         }
     </style>
