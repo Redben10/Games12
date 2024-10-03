@@ -126,15 +126,15 @@
         .game-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px; /* Reduced spacing between cards */
-            justify-items: center; /* Center items in the grid */
+            gap: 0; /* No spacing between cards */
         }
 
         .game-card {
             width: 200px; /* Set a fixed width */
             height: 200px; /* Set a fixed height to make it square */
             background-color: #333;
-            padding: 5px; /* Reduced padding to bring content closer */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -253,7 +253,6 @@
     </div>
 
     <div class="footer">
-        &copy; 2024 Void's Games
     </div>
 </body>
 </html>
