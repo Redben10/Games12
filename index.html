@@ -6,205 +6,171 @@
     <title>Void's Games</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        html, body {
-            height: 100%; /* Ensure html and body take full height */
-            margin: 0; /* Remove default margin */
-        }
+html, body {
+    height: 100%; /* Full height */
+    margin: 0; /* Remove default margin */
+    font-family: 'Arial', sans-serif; /* Font style */
+    background: #1a1a1a; /* Background color */
+    color: #f5f5f5; /* Font color */
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #1a1a1a;
-            color: #f5f5f5;
-            display: flex;
-            flex-direction: column;
-        }
+body {
+    display: flex;
+    flex-direction: column;
+}
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-        .topbar {
-            background-color: #222;
-            padding: 10px; /* Reduced padding */
-            text-align: center;
-            border-bottom: 2px solid #444;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+.topbar {
+    background-color: #222; /* Top bar background color */
+    padding: 1vw; /* Responsive padding */
+    text-align: center;
+    border-bottom: 2px solid #444; /* Border color */
+}
 
-        .topbar h1 {
-            margin: 0;
-            font-size: 2em; /* Adjusted font size */
-        }
+.topbar h1 {
+    margin: 0;
+    font-size: 3vw; /* Responsive font size */
+}
 
-        .nav-buttons {
-            margin-top: 10px;
-        }
+.nav-buttons {
+    margin-top: 1vw; /* Responsive margin */
+}
 
-        .nav-button, .nav-button2 {
-            text-decoration: none;
-            background-color: #333;
-            border: none;
-            color: #fff;
-            padding: 10px 15px; /* Adjusted padding */
-            margin: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            border-radius: 30px;
-            transition: background-color 0.3s, transform 0.2s;
-        }
+.nav-button, .nav-button2 {
+    background-color: #333; /* Button background color */
+    border: none;
+    color: #fff; /* Button text color */
+    padding: 1vw 2vw; /* Responsive padding */
+    margin: 0.5vw; /* Responsive margin */
+    cursor: pointer;
+    font-size: 2vw; /* Responsive font size */
+    border-radius: 1vw; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+}
 
-        .nav-button:hover {
-            background-color: #555;
-            transform: scale(1.05);
-        }
+.nav-button:hover {
+    background-color: #555; /* Hover effect */
+    transform: scale(1.05);
+}
 
-        .nav-button2 {
-            background-color: #666;
-        }
+.content {
+    flex-grow: 1; /* Grow to fill space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items */
+    justify-content: center; /* Center vertically */
+    padding: 2vw; /* Responsive padding */
+    text-align: center; /* Center text */
+}
 
-        .content {
-            flex-grow: 1; /* Allow content to grow and fill available space */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; /* Center content vertically */
-            padding: 10px; /* Adjusted padding */
-            text-align: center;
-        }
+.content p {
+    font-size: 2vw; /* Responsive font size */
+    margin: 1vw 0; /* Responsive margin */
+}
 
-        .content p {
-            font-size: 1.2em; /* Adjusted font size */
-            margin: 10px 0;
-        }
+#icon {
+    margin: 2vw auto; /* Center icon */
+    width: 50vw; /* Responsive width */
+    max-height: 30vh; /* Max height to avoid overflow */
+    border-radius: 50%; /* Circular icon */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Shadow effect */
+}
 
-        #icon {
-            display: block;
-            margin: 20px auto;
-            width: 50vw; /* Use viewport width for responsiveness */
-            height: auto; /* Maintain aspect ratio */
-            max-height: 250px; /* Set a maximum height */
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
+.play-button-container {
+    display: flex;
+    justify-content: center; /* Center button */
+    align-items: center; /* Center vertically */
+    margin: 3vw 0; /* Responsive margin */
+}
 
-        .play-button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
-        }
+.play-button {
+    background: linear-gradient(145deg, #28a745, #218838); /* Gradient background */
+    color: #fff; /* Button text color */
+    padding: 2vw 5vw; /* Responsive padding */
+    font-size: 2.5vw; /* Responsive font size */
+    border-radius: 2vw; /* Rounded corners */
+    border: 2px solid #1e7e34; /* Border color */
+    transition: background 0.3s, transform 0.2s; /* Transition effects */
+}
 
-        .play-button {
-            text-decoration: none;
-            background: linear-gradient(145deg, #28a745, #218838);
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 1.5em; /* Adjusted font size */
-            border-radius: 50px;
-            border: 2px solid #1e7e34;
-            transition: background 0.3s, transform 0.2s;
-            width: 70%; /* Make button responsive */
-            max-width: 300px; /* Set a maximum width */
-        }
+.play-button:hover {
+    background: linear-gradient(145deg, #218838, #28a745); /* Hover effect */
+    transform: translateY(-5px);
+}
 
-        .play-button:hover {
-            background: linear-gradient(145deg, #218838, #28a745);
-            transform: translateY(-5px);
-        }
+.featured-games {
+    padding: 2vw; /* Responsive padding */
+    text-align: center; /* Center text */
+}
 
-        .featured-games {
-            background-color: #1a1a1a;
-            padding: 10px; /* Reduced padding */
-            text-align: center;
-        }
+.featured-games h2 {
+    font-size: 3vw; /* Responsive font size */
+    margin-bottom: 1vw; /* Responsive margin */
+}
 
-        .featured-games h2 {
-            font-size: 2em; /* Adjusted font size */
-            margin-bottom: 10px; /* Reduced margin */
-        }
+.game-grid {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center items */
+    flex-wrap: wrap; /* Allow wrapping */
+}
 
-        .game-grid {
-            display: flex; /* Changed to flexbox */
-            justify-content: center; /* Center items */
-            flex-wrap: wrap; /* Allow wrapping */
-        }
+.game-card {
+    width: 80vw; /* Full width on smaller screens */
+    max-width: 200px; /* Max width for cards */
+    margin: 1vw; /* Responsive margin */
+    background-color: #333; /* Card background color */
+    border-radius: 15px; /* Rounded corners */
+    transition: transform 0.2s; /* Transition effects */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items */
+}
 
-        .game-card {
-            width: 100%; /* Make cards full width on smaller screens */
-            max-width: 200px; /* Set a maximum width for cards */
-            margin: 10px; /* Adjusted margin for spacing */
-            background-color: #333;
-            border-radius: 15px;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; /* Center align content */
-        }
+.game-card:hover {
+    transform: scale(1.05); /* Hover effect */
+}
 
-        .game-card:hover {
-            transform: scale(1.05);
-        }
+.game-card img {
+    width: 100%; /* Fill card width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 150px; /* Max height for images */
+    border-radius: 10px; /* Rounded corners */
+    object-fit: cover; /* Maintain aspect ratio */
+}
 
-        .game-card img {
-            width: 100%; /* Make images fill the card */
-            height: auto; /* Maintain aspect ratio */
-            max-height: 150px; /* Set a maximum height for images */
-            border-radius: 10px;
-            object-fit: cover; /* Maintain aspect ratio */
-        }
+.game-card h3 {
+    margin: 1vw 0; /* Responsive margin */
+    font-size: 1.5vw; /* Responsive font size */
+}
 
-        .game-card h3 {
-            margin: 10px 0; /* Adjusted margin for titles */
-            font-size: 1.2em; /* Adjusted font size */
-        }
+.game-card a {
+    display: block; /* Block display for link */
+    background-color: #333; /* Link background color */
+    color: #fff; /* Link text color */
+    padding: 1vw; /* Responsive padding */
+    font-size: 1.5vw; /* Responsive font size */
+    border-radius: 15px; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+    width: 100%; /* Full width */
+}
 
-        .game-card a {
-            display: block;
-            text-decoration: none;
-            background-color: #333;
-            color: #fff;
-            padding: 8px 12px; 
-            font-size: 1em; /* Adjusted font size */
-            border-radius: 15px;
-            transition: background-color 0.3s, transform 0.2s;
-            text-align: center;
-            width: 100%; 
-        }
+.game-card a:hover {
+    background-color: #555; /* Hover effect */
+    transform: scale(1.05); /* Scale on hover */
+}
 
-        .game-card a:hover {
-            background-color: #555;
-            transform: scale(1.05);
-        }
+.footer {
+    background-color: #1a1a1a; /* Footer background color */
+    text-align: center; /* Center text */
+    padding: 1vw; /* Responsive padding */
+    color: #aaa; /* Footer text color */
+    height: 10vh; /* Fixed height for footer */
+}
 
-        .footer {
-            background-color: #1a1a1a;
-            text-align: center;
-            padding: 10px; /* Adjusted padding */
-            color: #aaa;
-            height: 60px; /* Set a fixed height for footer */
-        }
-
-        @media (max-width: 768px) {
-            .play-button {
-                padding: 15px 20px; /* Adjusted padding */
-                font-size: 1.2em; /* Adjusted font size */
-            }
-
-            #icon {
-                width: 70vw; /* Adjusted icon width */
-                height: auto; /* Maintain aspect ratio */
-            }
-
-            .game-card {
-                width: 100%; /* Make game cards full width */
-                height: auto; /* Allow height to adjust */
-            }
-        }
     </style>
 </head>
 <body>
