@@ -131,7 +131,7 @@
 
         .game-card {
             width: 200px; /* Set a fixed width */
-            height: 200px; /* Set a fixed height to make it square */
+            height: 250px; /* Increased height to accommodate the content */
             background-color: #333;
             margin: 20px; /* Add margin for spacing */
             border-radius: 15px;
@@ -139,7 +139,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between; /* Distribute space between elements */
             align-items: center; /* Center align content */
         }
 
@@ -149,8 +149,7 @@
 
         .game-card img {
             width: 100%; /* Make images fill the card */
-            height: auto; /* Maintain aspect ratio */
-            max-height: 150px; /* Set a maximum height for images */
+            height: 150px; /* Set a fixed height for images */
             border-radius: 10px;
             object-fit: cover; /* Maintain aspect ratio */
         }
