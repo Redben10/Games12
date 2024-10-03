@@ -126,7 +126,8 @@
         .game-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            gap: 20px; /* Adjust this value for spacing between cards */
+            justify-items: center; /* Center items in the grid */
         }
 
         .game-card {
@@ -141,6 +142,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center; /* Center align content */
+            /* Removed margin to use grid gap for spacing */
         }
 
         .game-card:hover {
