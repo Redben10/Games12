@@ -15,10 +15,8 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Center content vertically */
-            overflow: hidden; /* Prevent scrolling */
+            justify-content: space-between;
         }
-
         a {
             text-decoration: none;
             color: inherit;
@@ -26,7 +24,7 @@
 
         .topbar {
             background-color: #222;
-            padding: 10px;
+            padding: 20px;
             text-align: center;
             border-bottom: 2px solid #444;
             position: sticky;
@@ -72,21 +70,21 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 5vh 2vw; /* Use vh and vw for padding */
+            padding: 40px;
             text-align: center;
+            background-color: #1a1a1a;
         }
 
         .content p {
-            font-size: 2.5vw; /* Use viewport width for font size */
+            font-size: 1.5em;
             margin: 10px 0;
         }
 
         #icon {
             display: block;
             margin: 20px auto;
-            width: 20vw; /* Use vw for responsive width */
-            max-width: 250px; /* Set a max width */
-            height: auto; /* Maintain aspect ratio */
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
@@ -103,7 +101,7 @@
             background: linear-gradient(145deg, #28a745, #218838);
             color: #fff;
             padding: 10px 20px;
-            font-size: 2.5vw; /* Use viewport width for font size */
+            font-size: 2em;
             border-radius: 50px;
             border: 2px solid #1e7e34;
             transition: background 0.3s, transform 0.2s;
@@ -116,34 +114,33 @@
 
         .featured-games {
             background-color: #1a1a1a;
-            padding: 5vh 2vw; /* Use vh and vw for padding */
+            padding: 40px;
             text-align: center;
         }
 
         .featured-games h2 {
-            font-size: 3vw; /* Use viewport width for font size */
+            font-size: 2.2em;
             margin-bottom: 30px;
         }
 
         .game-grid {
-            display: flex; 
-            justify-content: center; 
-            flex-wrap: wrap; 
+            display: flex; /* Changed to flexbox */
+            justify-content: center; /* Center items */
+            flex-wrap: wrap; /* Allow wrapping */
         }
 
         .game-card {
-            width: 30vw; /* Use vw for responsive width */
-            max-width: 200px; /* Set a max width */
-            height: 30vh; /* Set height based on viewport */
+            width: 200px; /* Set a fixed width */
+            height: 200px; /* Set a fixed height to make it square */
             background-color: #333;
-            margin: 10px; 
+            margin: 20px; /* Add margin for spacing */
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; 
+            align-items: center; /* Center align content */
         }
 
         .game-card:hover {
@@ -151,16 +148,16 @@
         }
 
         .game-card img {
-            width: 100%; 
-            height: auto; 
-            max-height: 60%; /* Set max height to make images responsive */
+            width: 100%; /* Make images fill the card */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 150px; /* Set a maximum height for images */
             border-radius: 10px;
-            object-fit: cover; 
+            object-fit: cover; /* Maintain aspect ratio */
         }
 
         .game-card h3 {
-            margin: 10px 0; 
-            font-size: 2vw; /* Use viewport width for title size */
+            margin: 10px 0; /* Adjusted margin for titles */
+            font-size: 1.5em;
         }
 
         .game-card a {
@@ -168,12 +165,12 @@
             text-decoration: none;
             background-color: #333;
             color: #fff;
-            padding: 5px 10px; 
-            font-size: 1.5vw; /* Use viewport width for font size */
+            padding: 8px 12px; /* Smaller padding */
+            font-size: 1em; /* Smaller font size */
             border-radius: 15px;
             transition: background-color 0.3s, transform 0.2s;
             text-align: center;
-            width: 100%; 
+            width: 100%; /* Make link fill the card */
         }
 
         .game-card a:hover {
@@ -191,36 +188,17 @@
         @media (max-width: 768px) {
             .play-button {
                 padding: 15px 30px;
-                font-size: 2vw; /* Adjust font size for smaller screens */
+                font-size: 1.5em;
             }
 
             #icon {
-                width: 40vw; /* Adjust width for smaller screens */
-                max-width: 200px;
+                width: 200px;
+                height: 200px;
             }
 
             .game-card {
-                width: 80vw; /* Make game cards responsive on smaller screens */
+                width: 100%; /* Make game cards responsive on smaller screens */
                 height: auto; /* Allow height to adjust */
-            }
-
-            .nav-button, .nav-button2 {
-                font-size: 0.9em; /* Adjust button font size for smaller screens */
-                padding: 8px 15px; /* Adjust padding */
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .topbar h1 {
-                font-size: 2em; /* Adjust title size for very small screens */
-            }
-
-            .nav-button, .nav-button2 {
-                font-size: 0.8em; /* Further adjust button font size */
-            }
-
-            .game-card h3 {
-                font-size: 1.5vw; /* Smaller title size */
             }
         }
     </style>
