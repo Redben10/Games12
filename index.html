@@ -14,9 +14,7 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden; /* Prevents any overflow */
-            min-height: 100vh; /* Ensures body takes up full height */
+            min-height: 100vh;
         }
 
         a {
@@ -37,7 +35,6 @@
         .topbar h1 {
             margin: 0;
             font-size: 2.5em;
-            color: #f5f5f5;
         }
 
         .nav-buttons {
@@ -45,9 +42,7 @@
         }
 
         .nav-button, .nav-button2 {
-            text-decoration: none;
             background-color: #333;
-            border: none;
             color: #fff;
             padding: 10px 20px;
             margin: 5px;
@@ -72,20 +67,19 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: 20px;
             text-align: center;
-            background-color: #1a1a1a;
-            overflow: hidden; /* Prevents overflow */
+            overflow-y: auto; /* Allows scrolling within this section if needed */
         }
 
         .content p {
             font-size: 1.5em;
-            margin: 10px 0;
+            margin: 5px 0; /* Reduced margin */
         }
 
         #icon {
             display: block;
-            margin: 20px auto;
+            margin: 10px auto;
             width: 70%; /* Responsive width */
             max-width: 250px; /* Max width */
             height: auto; /* Height auto for responsiveness */
@@ -94,18 +88,14 @@
         }
 
         .play-button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 30px 0;
+            margin: 20px 0; /* Adjusted margin */
         }
 
         .play-button {
-            text-decoration: none;
             background: linear-gradient(145deg, #28a745, #218838);
             color: #fff;
             padding: 10px 20px;
-            font-size: 2em;
+            font-size: 1.5em;
             border-radius: 50px;
             border: 2px solid #1e7e34;
             transition: background 0.3s, transform 0.2s;
@@ -117,27 +107,25 @@
         }
 
         .featured-games {
-            background-color: #1a1a1a;
-            padding: 40px;
+            padding: 20px; /* Reduced padding */
             text-align: center;
         }
 
         .featured-games h2 {
-            font-size: 2.2em;
-            margin-bottom: 10px; /* Reduced margin to prevent overflow */
+            font-size: 2em;
+            margin-bottom: 20px; /* Adjusted margin */
         }
 
         .game-grid {
             display: flex; 
             justify-content: center; 
             flex-wrap: wrap; 
+            gap: 10px; /* Added gap for spacing between cards */
         }
 
         .game-card {
-            width: calc(33.333% - 10px); /* Responsive width */
-            height: auto; 
+            width: calc(33.333% - 20px); /* Responsive width with gap consideration */
             background-color: #333;
-            margin: 5px; /* Margin added for spacing */
             border-radius: 15px;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -165,12 +153,9 @@
         }
 
         .game-card a {
-            display: block;
-            text-decoration: none;
             background-color: #333;
             color: #fff;
             padding: 8px 12px; 
-            font-size: 1em; 
             border-radius: 15px;
             transition: background-color 0.3s, transform 0.2s;
             text-align: center;
@@ -191,8 +176,8 @@
 
         @media (max-width: 768px) {
             .play-button {
-                padding: 15px 30px;
-                font-size: 1.5em;
+                padding: 10px 15px;
+                font-size: 1.2em;
             }
 
             #icon {
@@ -211,6 +196,10 @@
 
             .topbar h1 {
                 font-size: 2em; /* Responsive font size */
+            }
+
+            .content p {
+                font-size: 1.2em; /* Smaller font size for mobile */
             }
         }
     </style>
@@ -264,6 +253,7 @@
     </div>
 
     <div class="footer">
+        &copy; 2024 Void's Games
     </div>
 </body>
 </html>
