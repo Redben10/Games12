@@ -15,6 +15,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            overflow-y: auto; /* Allow vertical scrolling */
         }
 
         a {
@@ -73,6 +74,8 @@
             padding: 40px;
             text-align: center;
             background-color: #1a1a1a;
+            max-height: calc(100vh - 150px); /* Adjust height according to your topbar and footer */
+            overflow-y: auto; /* Allows scrolling within this section if needed */
         }
 
         .content p {
