@@ -130,8 +130,8 @@
         }
 
         .game-card {
-            width: 200px; /* Fixed width */
-            height: 300px; /* Increased height for content */
+            width: 200px; /* Set a fixed width */
+            height: 200px; /* Set a fixed height to make it square */
             background-color: #333;
             margin: 20px; /* Add margin for spacing */
             border-radius: 15px;
@@ -139,8 +139,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center; /* Center align content */
-            justify-content: space-between; /* Space between elements */
         }
 
         .game-card:hover {
@@ -149,7 +149,8 @@
 
         .game-card img {
             width: 100%; /* Make images fill the card */
-            height: 150px; /* Fixed height for images */
+            height: auto; /* Maintain aspect ratio */
+            max-height: 150px; /* Set a maximum height for images */
             border-radius: 10px;
             object-fit: cover; /* Maintain aspect ratio */
         }
@@ -164,13 +165,13 @@
             text-decoration: none;
             background-color: #333;
             color: #fff;
-            padding: 10px 0; /* Adjust padding */
-            font-size: 1em; /* Font size */
+            padding: 8px 12px; /* Smaller padding */
+            font-size: 1em; /* Smaller font size */
             border-radius: 15px;
             transition: background-color 0.3s, transform 0.2s;
             text-align: center;
             width: 100%; /* Make link fill the card */
-            height: 50px; /* Fixed height for buttons */
+            height: 50px; /* Set a fixed height for the buttons */
             line-height: 50px; /* Center text vertically */
         }
 
