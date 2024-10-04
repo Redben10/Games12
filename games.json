@@ -226,7 +226,7 @@
       "text": "Stack",
       "link": "game.html?game=Stack",
       "link2": "Games/stack.html",
-      "image": ".Games/stack/stack.png"
+      "image": "./Games/stack/stack.png"
     }, 
     {
       "text": "World's Hardest Game",
