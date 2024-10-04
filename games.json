@@ -58,13 +58,13 @@
       "text": "Monkey Mart",
       "link": "game.html?game=Monkey%20Mart",
       "link2": "Games/monkey.html",
-      "image": "./Games/paperio2/images/icon192.png"
+      "image": "./img/monkey.jpeg"
     },
     {
       "text": "Paper.io 2",
       "link": "game.html?game=Paper.io%202",
       "link2": "Games/paperio2.html",
-      "image": "./img/monkey.jpeg"
+      "image": "./Games/paperio2/images/icon192.png"
     },
     {
       "text": "Funny Shooter 2",
