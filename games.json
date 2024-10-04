@@ -14,9 +14,27 @@
     },
     {
       "text": "Retro Bowl",
-      "link": "game.html?game=retro-bowl",
+      "link": "game.html?game=Retro%20Bowl",
       "link2": "Games/retro-bowl",
       "image": "/img/Retro.png"
+    },
+    {
+      "text": "Rooftop Snipers",
+      "link": "game.html?game=Rooftop%20Snipers",
+      "link2": "Games/rooftop-snipers",
+      "image": "/img/roof.jpeg"
+    },
+    {
+      "text": "Minecraft",
+      "link": "game.html?game=Minecraft",
+      "link2": "Games/eagle",
+      "image": "/img/minecraft.png"
+    },
+    {
+      "text": "idle breakout",
+      "link": "game.html?game=idle%20breakout",
+      "link2": "Games/eagle",
+      "image": "/img/idle.png"
     },
     {
       "text": "Basketball Stars",
@@ -29,6 +47,12 @@
       "link": "game.html?game=Bit%20Plane",
       "link2": "Games/Planes.html",
       "image": "./img/plane.jpg"
+    },
+    {
+      "text": "Bit Life",
+      "link": "game.html?game=Bit%20Life",
+      "link2": "Games/bitlife.html",
+      "image": "./Games/bitlife/logo.png"
     },
     {
       "text": "Monkey Mart",
@@ -129,7 +153,7 @@
     {
       "text": "Snowrider 3D",
       "link": "game.html?game=Snowrider%203D",
-      "link2": "Games/Snowrider3D.html",
+      "link2": "Games/snowride.html",
       "image": "./img/snowride.webp"
     },
     {
