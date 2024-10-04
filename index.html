@@ -271,20 +271,28 @@
         window.onload = selectRandomGame;
     </script>
     <script>
-        document.getElementById('redirectButton').addEventListener('click', function() {
-            // Create a new blank page
-            const newWindow = window.open('about:blank');
-            
-            // Create an iframe element
-            const iframe = newWindow.document.createElement('iframe');
-            iframe.src = window.location.href;
-            iframe.style.width = '110%';
-            iframe.style.height = '110%';
-            iframe.style.border = 'none';
+document.getElementById('redirectButton').addEventListener('click', function() {
+    const newWindow = window.open('about:blank');
+    const iframe = newWindow.document.createElement('iframe');
+    iframe.src = window.location.href;
+    
+    // Apply styles to the iframe
+    iframe.style.width = '100vw'; // Full viewport width
+    iframe.style.height = '100vh'; // Full viewport height
+    iframe.style.border = 'none'; // No border
+    iframe.style.position = 'absolute'; // Position it absolutely
+    iframe.style.top = '0'; // Align to the top
+    iframe.style.left = '0'; // Align to the left
 
-            // Append the iframe to the new window's document
-            newWindow.document.body.appendChild(iframe);
-        });
+    newWindow.document.body.appendChild(iframe);
+    
+    newWindow.document.body.style.margin = '0'; 
+    newWindow.document.body.style.overflow = 'hidden'; 
+    newWindow.document.body.style.position = 'relative'; 
+    newWindow.document.body.style.width = '100vw'; 
+    newWindow.document.body.style.height = '100vh'; 
+};
+
     </script>
     
     
