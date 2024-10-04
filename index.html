@@ -272,43 +272,27 @@
     </script>
 <script>
 document.getElementById('redirectButton').addEventListener('click', function() {
-    // Attempt to open a new window
+    // Create a new blank page
     const newWindow = window.open('about:blank');
+    
+    // Set styles for the new window's document
+    newWindow.document.body.style.margin = '0';
+    newWindow.document.body.style.padding = '0';
+    newWindow.document.body.style.height = '100vh'; // Full height
+    newWindow.document.body.style.width = '100vw';  // Full width
+    newWindow.document.body.style.overflow = 'hidden'; // Prevent scrolling
 
-    // Check if the new window was successfully created
-    if (newWindow) {
-        newWindow.onload = function() {
-            const iframe = newWindow.document.createElement('iframe');
-            iframe.src = window.location.href;
-            
-            // Apply styles to the iframe
-            iframe.style.width = '100%'; // Full viewport width
-            iframe.style.height = '100%'; // Full viewport height
-            iframe.style.border = 'none'; // No border
-            iframe.style.position = 'absolute'; // Position it absolutely
-            iframe.style.top = '0'; // Align to the top
-            iframe.style.left = '0'; // Align to the left
-            
-            // Optionally add sandboxing for security
-            // iframe.sandbox = "allow-same-origin allow-scripts";
+    // Create an iframe element
+    const iframe = newWindow.document.createElement('iframe');
+    iframe.src = window.location.href; // Use the current URL
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
 
-            // Append the iframe to the new window's document
-            newWindow.document.body.appendChild(iframe);
-            
-            // Set styles for the new window's body
-            newWindow.document.body.style.margin = '0'; 
-            newWindow.document.body.style.overflow = 'hidden'; 
-            newWindow.document.body.style.position = 'relative'; 
-            newWindow.document.body.style.width = '100vw'; 
-            newWindow.document.body.style.height = '100vh'; 
-        };
-
-        // It's a good practice to set an empty body to avoid errors
-        newWindow.document.body.innerHTML = ''; 
-    } else {
-        alert('Popup blocked! Please allow popups for this site.');
-    }
+    // Append the iframe to the new window's document
+    newWindow.document.body.appendChild(iframe);
 });
+
 </script>
     
     
