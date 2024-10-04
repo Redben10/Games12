@@ -223,6 +223,12 @@
       "image": "./img/vex7.webp"
     },
     {
+      "text": "Stack",
+      "link": "game.html?game=Stack",
+      "link2": "Games/stack.html",
+      "image": ".Games/stack/stack.png"
+    }, 
+    {
       "text": "World's Hardest Game",
       "link": "game.html?game=World's%20Hardest%20Game",
       "link2": "Games/worlds-hardest-game.html",
