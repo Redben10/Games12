@@ -133,6 +133,17 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             font-size: 1.2em; /* Increased font size */
         }
+        .redirectButton {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #333;
+            border-radius: 10px;
+            padding: 15px; /* Increased padding */
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            font-size: 1.2em; 
+        }
 
         .random-game h3 {
             margin: 10px 0 5px; /* Adjusted margin for spacing */
@@ -159,11 +170,6 @@
             #icon {
                 width: 200px;
                 height: 200px;
-            }
-
-            .game-card {
-                width: 100%; /* Make game cards responsive on smaller screens */
-                height: auto; /* Allow height to adjust */
             }
         }
     </style>
@@ -192,7 +198,6 @@
     <div class="footer">
     </div>
 
-<!-- Random game section -->
 <div id="random-game" class="random-game" style="display: none;">
     <a id="random-game-link" href="">
         <img id="random-game-image" src="" alt="Random Game">
@@ -200,6 +205,10 @@
         <p id="random-game-description"></p>
     </a>
 </div>
+<div> 
+    <button id="redirectButton" class = >Click this to turn your tab inot an About-Blank Tab</button>
+</div>   
+    
 
     <script>
         // Array of games
