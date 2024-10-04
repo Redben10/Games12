@@ -19,9 +19,21 @@
       "image": "/img/Retro.png"
     },
     {
+      "text": "Rooftop Snipers",
+      "link": "game.html?game=Rooftop%20Snipers",
+      "link2": "Games/rooftop-snipers",
+      "image": "/img/roof.png"
+    },
+    {
+      "text": "Minecraft",
+      "link": "game.html?game=Minecraft",
+      "link2": "Games/eagle",
+      "image": "/img/minecraft.png"
+    },
+    {
       "text": "idle breakout",
       "link": "game.html?game=idle%20breakout",
-      "link2": "Games/idle-breakout",
+      "link2": "Games/eagle",
       "image": "/img/idle.png"
     },
     {
