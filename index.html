@@ -6,6 +6,7 @@
     <title>Void's Games</title>
     <link rel="stylesheet" href="styles.css">
     <script src="js/app.js" defer></script>
+    <script src="particles.js"></script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -16,10 +17,21 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Send it to the back */
         }
 
         .topbar {
-            background-color: #222;
+            background-color: rgba(34, 34, 34, 0.9);
             padding: 20px;
             text-align: center;
             border-bottom: 2px solid #444;
@@ -66,6 +78,7 @@
             justify-content: center;
             padding: 20px;
             text-align: center;
+            z-index: 1; /* Bring content to the front */
         }
 
         .content p {
@@ -105,7 +118,7 @@
         }
 
         .footer {
-            background-color: #1a1a1a;
+            background-color: rgba(26, 26, 26, 0.9);
             text-align: center;
             padding: 10px;
             color: #aaa;
@@ -121,6 +134,7 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             font-size: 1.2em;
             color: white;
+            z-index: 1; /* Bring button to the front */
         }
 
         .random-game {
@@ -158,6 +172,8 @@
     </style>
 </head>
 <body>
+    <div id="particles-js"></div> <!-- Particles.js container -->
+
     <div class="topbar">
         <h1>Void's Games</h1>
         <div class="nav-buttons">
@@ -167,8 +183,6 @@
         </div>
     </div>
 
-    <div id="particles-js"></div> <!-- Particles.js container -->
-    
     <div class="content">
         <p>Hey, what is this website?</p>
         <p>This is a simple game website to have fun.</p>
@@ -192,8 +206,11 @@
 
     <button id="redirectButton">Click this to turn your tab into an About-Blank Tab</button>
 
-    <script src="particles.js"></script>
     <script>
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+
         // Array of games
         const games = [
             {
@@ -250,18 +267,23 @@
         }
 
         // Call the function when the page loads
-        window.onload = selectRandomGame;
+        window.onload = function() {
+            selectRandomGame();
+            particlesJS.load('particles-js', 'particles.json', function() {
+                console.log('callback - particles.js config loaded');
+            });
+        };
 
         document.getElementById('redirectButton').addEventListener('click', function() {
             // Create a new blank page
             const newWindow = window.open('about:blank');
-            
+
             // Set styles for the new window's document
             newWindow.document.body.style.margin = '0';
             newWindow.document.body.style.padding = '0';
-            newWindow.document.body.style.height = '100vh';
-            newWindow.document.body.style.width = '100vw';
-            newWindow.document.body.style.overflow = 'hidden';
+            newWindow.document.body.style.height = '100vh'; // Full height
+            newWindow.document.body.style.width = '100vw';  // Full width
+            newWindow.document.body.style.overflow = 'hidden'; // Prevent scrolling
 
             // Create an iframe element
             const iframe = newWindow.document.createElement('iframe');
