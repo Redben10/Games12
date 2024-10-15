@@ -9,6 +9,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
+            background: #1a1a1a;
             color: #f5f5f5;
             margin: 0;
             padding: 0;
@@ -16,20 +17,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative; /* Ensure body is positioned */
-            overflow: hidden; /* Prevent scrollbars */
         }
-
-        #particles-js{
-            width: 100%;
-            height: 100%;
-            background-color: #b61924;
-            background-image: url('');
-            background-size: cover;
-            background-position: 50% 50%;
-            background-repeat: no-repeat;
-        }
-
         a {
             text-decoration: none;
             color: inherit;
@@ -42,7 +30,7 @@
             border-bottom: 2px solid #444;
             position: sticky;
             top: 0;
-            z-index: 2; /* Set z-index higher than particles */
+            z-index: 1000;
         }
 
         .topbar h1 {
@@ -83,19 +71,20 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 20px; /* Reduced padding */
             text-align: center;
-            z-index: 2; /* Set z-index higher than particles */
+            background-color: #1a1a1a;
+            margin-bottom: 0; /* Remove bottom margin */
         }
 
         .content p {
             font-size: 1.5em;
-            margin: 5px 0;
+            margin: 5px 0; /* Reduced margin */
         }
 
         #icon {
             display: block;
-            margin: 10px auto;
+            margin: 10px auto; /* Reduced margin */
             width: 250px;
             height: 250px;
             border-radius: 50%;
@@ -106,7 +95,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 5px 0;
+            margin: 5px 0; /* Reduced margin */
         }
 
         .play-button {
@@ -128,52 +117,50 @@
         .footer {
             background-color: #1a1a1a;
             text-align: center;
-            padding: 10px;
+            padding: 10px; /* Reduced padding */
             color: #aaa;
-            z-index: 2; /* Set z-index higher than particles */
+            margin: 0; /* Ensure no extra margin */
         }
 
+        /* Style for the random game button */
         .random-game {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background: #333;
             border-radius: 10px;
-            padding: 15px;
+            padding: 15px; /* Increased padding */
             text-align: center;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            font-size: 1.2em;
-            z-index: 2; /* Set z-index higher than particles */
+            font-size: 1.2em; /* Increased font size */
         }
-
         #redirectButton {
             position: fixed;
             bottom: 20px;
             left: 20px;
             background: #333;
             border-radius: 10px;
-            padding: 15px;
+            padding: 15px; /* Increased padding */
             text-align: center;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             font-size: 1.2em; 
             color: white;
-            z-index: 2; /* Set z-index higher than particles */
         }
 
         .random-game h3 {
-            margin: 10px 0 5px;
+            margin: 10px 0 5px; /* Adjusted margin for spacing */
         }
 
         .random-game p {
-            margin: 0;
+            margin: 0; /* Adjusted margin for spacing */
         }
 
         .random-game img {
-            width: 200px;
-            height: 200px;
+            width: 200px; /* Adjust image size */
+            height: 200px; /* Adjust image size */
             border-radius: 5px;
             display: block;
-            margin: 0 auto 5px auto;
+            margin: 0 auto 5px auto; /* Center the image */
         }
 
         @media (max-width: 768px) {
@@ -186,11 +173,19 @@
                 width: 200px;
                 height: 200px;
             }
+            #particles-js{
+                width: 100%;
+                height: 100%;
+                background-color: #b61924;
+                background-image: url('');
+                background-size: cover;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="particles-js"></div> 
     <div class="topbar">
         <h1>Void's Games</h1>
         <div class="nav-buttons">
@@ -199,27 +194,35 @@
             <a href="./About.html" class="nav-button">About</a>
         </div>
     </div>
-    <div class="content">
-        <p>Hey, what is this website?</p>
-        <p>This is a simple game website to have fun.</p>
-        <p>It will be updated pretty often.</p>
-        <img src="./img/icons.png" id="icon" alt="Game Icon">
-    </div>
-    <div class="play-button-container">
-        <a href="./Games.html" class="play-button">Play</a>
-    </div>
-    <div class="footer"></div>
-    <div id="random-game" class="random-game" style="display: none;">
-        <a id="random-game-link" href="">
-            <img id="random-game-image" src="" alt="Random Game">
-            <h3 id="random-game-title"></h3>
-            <p id="random-game-description"></p>
-        </a>
-    </div>
-    <div> 
-        <button id="redirectButton">Click this to turn your tab into an About-Blank Tab</button>
-    </div>   
-    <script src="particles.js"></script>
+    <!-- particles.js container -->
+<div id="particles-js">
+        <!-- scripts -->
+          <script src="particles.js"></script>
+          <script src="js/app.js"></script>
+      <div class="content">
+          <p>Hey, what is this website?</p>
+          <p>This is a simple game website to have fun.</p>
+          <p>It will be updated pretty often.</p>
+          <img src="./img/icons.png" id="icon" alt="Game Icon">
+      </div>
+
+      <div class="play-button-container">
+          <a href="./Games.html" class="play-button">Play</a>
+      </div>
+
+      <div class="footer">
+      </div>
+
+  <div id="random-game" class="random-game" style="display: none;">
+      <a id="random-game-link" href="">
+          <img id="random-game-image" src="" alt="Random Game">
+          <h3 id="random-game-title"></h3>
+          <p id="random-game-description"></p>
+      </a>
+  </div>
+  <div> 
+      <button id="redirectButton" class = >Click this to turn your tab into an About-Blank Tab</button>
+  </div>   
     <script>
         // Array of games
         const games = [
@@ -257,7 +260,7 @@
                 url: 'game.html?game=Toss%20the%20Turtle',
                 image: './img/tosstheturtle.webp',
                 title: 'Toss The Turtle',
-                description: 'Play Toss The Turtle!'
+                description: 'Play Subway Surfers!'
             }
         ];
 
@@ -278,29 +281,31 @@
 
         // Call the function when the page loads
         window.onload = selectRandomGame;
-
-        // Initialize particles.js
-        particlesJS.load('particles-js', 'path/to/particles.json', function() {
-            console.log('callback - particles.js config loaded');
-        });
-
-        // Redirect button functionality
-        document.getElementById('redirectButton').addEventListener('click', function() {
-            const newWindow = window.open('about:blank');
-            newWindow.document.body.style.margin = '0';
-            newWindow.document.body.style.padding = '0';
-            newWindow.document.body.style.height = '100vh';
-            newWindow.document.body.style.width = '100vw';
-            newWindow.document.body.style.overflow = 'hidden';
-
-            const iframe = newWindow.document.createElement('iframe');
-            iframe.src = window.location.href;
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.border = 'none';
-
-            newWindow.document.body.appendChild(iframe);
-        });
     </script>
+<script>
+document.getElementById('redirectButton').addEventListener('click', function() {
+    // Create a new blank page
+    const newWindow = window.open('about:blank');
+    
+    // Set styles for the new window's document
+    newWindow.document.body.style.margin = '0';
+    newWindow.document.body.style.padding = '0';
+    newWindow.document.body.style.height = '100vh'; // Full height
+    newWindow.document.body.style.width = '100vw';  // Full width
+    newWindow.document.body.style.overflow = 'hidden'; // Prevent scrolling
+
+    // Create an iframe element
+    const iframe = newWindow.document.createElement('iframe');
+    iframe.src = window.location.href; // Use the current URL
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+
+    // Append the iframe to the new window's document
+    newWindow.document.body.appendChild(iframe);
+});
+
+</script>
+</div>
 </body>
 </html>
