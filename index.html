@@ -19,6 +19,7 @@
             flex-direction: column;
             position: relative;
             overflow: hidden; /* Prevent overflow */
+            pointer-events: none;
         }
 
         #particles-js {
@@ -28,7 +29,6 @@
             width: 100%;
             height: 100%;
             z-index: 0; /* Ensure particles are behind other content */
-            pointer-events: none; /* Allow mouse events to pass through */
         }
 
 
@@ -81,6 +81,7 @@
             padding: 20px;
             text-align: center;
             z-index: 1; /* Bring content to the front */
+            pointer-events: none;
         }
 
         .content p {
