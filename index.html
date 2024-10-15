@@ -18,7 +18,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            overflow: hidden;
+            overflow: hidden; /* Prevent overflow */
         }
 
         #particles-js {
@@ -27,7 +27,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
+            z-index: 0; /* Send it to the back */
         }
 
         .topbar {
@@ -78,7 +78,7 @@
             justify-content: center;
             padding: 20px;
             text-align: center;
-            z-index: 1;
+            z-index: 1; /* Bring content to the front */
         }
 
         .content p {
@@ -92,7 +92,6 @@
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             margin: 10px 0;
-            background: #1a1a1a;
         }
 
         .play-button-container {
@@ -125,7 +124,7 @@
             color: #aaa;
         }
 
-        #random-game {
+        #redirectButton, .random-game {
             position: fixed;
             bottom: 20px;
             background: #333;
@@ -135,11 +134,23 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             font-size: 1.2em;
             color: white;
-            z-index: 1;
-            display: none; /* Initially hidden */
+            z-index: 1; /* Bring button to the front */
         }
 
-        #random-game img {
+        .random-game {
+            right: 20px;
+        }
+
+        .random-game:hover {
+            transform: scale(1.05);
+        }
+
+        .random-game a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .random-game img {
             width: 200px;
             height: 200px;
             border-radius: 5px;
@@ -161,7 +172,7 @@
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
+    <div id="particles-js"></div> <!-- Particles.js container -->
 
     <div class="topbar">
         <h1>Void's Games</h1>
@@ -185,8 +196,8 @@
 
     <div class="footer"></div>
 
-    <div id="random-game">
-        <a id="random-game-link" href="#">
+    <div id="random-game" class="random-game" style="display: none;">
+        <a id="random-game-link" href="">
             <img id="random-game-image" src="" alt="Random Game">
             <h3 id="random-game-title"></h3>
             <p id="random-game-description"></p>
@@ -200,6 +211,7 @@
             console.log('callback - particles.js config loaded');
         });
 
+        // Array of games
         const games = [
             {
                 url: 'game.html?game=Monkey%20Mart',
@@ -239,18 +251,22 @@
             }
         ];
 
+        // Function to randomly select a game
         function selectRandomGame() {
             const randomIndex = Math.floor(Math.random() * games.length);
             const selectedGame = games[randomIndex];
 
+            // Update the random game section with selected game details
             document.getElementById('random-game-link').href = selectedGame.url;
             document.getElementById('random-game-image').src = selectedGame.image;
             document.getElementById('random-game-title').innerText = selectedGame.title;
             document.getElementById('random-game-description').innerText = selectedGame.description;
 
+            // Show the random game section
             document.getElementById('random-game').style.display = 'block';
         }
 
+        // Call the function when the page loads
         window.onload = function() {
             selectRandomGame();
             particlesJS.load('particles-js', 'particles.json', function() {
@@ -259,19 +275,24 @@
         };
 
         document.getElementById('redirectButton').addEventListener('click', function() {
+            // Create a new blank page
             const newWindow = window.open('about:blank');
+
+            // Set styles for the new window's document
             newWindow.document.body.style.margin = '0';
             newWindow.document.body.style.padding = '0';
-            newWindow.document.body.style.height = '100vh';
-            newWindow.document.body.style.width = '100vw';
-            newWindow.document.body.style.overflow = 'hidden';
+            newWindow.document.body.style.height = '100vh'; // Full height
+            newWindow.document.body.style.width = '100vw';  // Full width
+            newWindow.document.body.style.overflow = 'hidden'; // Prevent scrolling
 
+            // Create an iframe element
             const iframe = newWindow.document.createElement('iframe');
-            iframe.src = window.location.href;
+            iframe.src = window.location.href; // Use the current URL
             iframe.style.width = '100%';
             iframe.style.height = '100%';
             iframe.style.border = 'none';
 
+            // Append the iframe to the new window's document
             newWindow.document.body.appendChild(iframe);
         });
     </script>
