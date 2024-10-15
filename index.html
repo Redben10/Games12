@@ -5,166 +5,156 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Void's Games</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="js/app.js"></script>
+    <script src="js/app.js" defer></script>
     <style>
-body {
-    font-family: 'Arial', sans-serif;
-    background: #1a1a1a;
-    color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1a1a1a;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-.topbar {
-    background-color: #222;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 2px solid #444;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        .topbar {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #444;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.topbar h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
+        .topbar h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
 
-.nav-buttons {
-    margin-top: 10px;
-}
+        .nav-buttons {
+            margin-top: 10px;
+        }
 
-.nav-button, .nav-button2 {
-    text-decoration: none;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    border-radius: 30px;
-    transition: background-color 0.3s, transform 0.2s;
-}
+        .nav-button, .nav-button2 {
+            text-decoration: none;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 30px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
 
-.nav-button:hover {
-    background-color: #555;
-    transform: scale(1.05);
-}
+        .nav-button:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
 
-.nav-button2 {
-    background-color: #666;
-}
+        .nav-button2 {
+            background-color: #666;
+        }
 
-.content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    text-align: center;
-}
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
 
-.content p {
-    font-size: 1.5em;
-    margin: 5px 0;
-}
+        .content p {
+            font-size: 1.5em;
+            margin: 5px 0;
+        }
 
-#icon {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    margin: 10px 0; /* Adjusted margin */
-}
+        #icon {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            margin: 10px 0;
+        }
 
-.play-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 0;
-}
+        .play-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px 0;
+        }
 
-.play-button {
-    text-decoration: none;
-    background: linear-gradient(145deg, #28a745, #218838);
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 2em;
-    border-radius: 50px;
-    border: 2px solid #1e7e34;
-    transition: background 0.3s, transform 0.2s;
-}
+        .play-button {
+            text-decoration: none;
+            background: linear-gradient(145deg, #28a745, #218838);
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 2em;
+            border-radius: 50px;
+            border: 2px solid #1e7e34;
+            transition: background 0.3s, transform 0.2s;
+        }
 
-.play-button:hover {
-    background: linear-gradient(145deg, #218838, #28a745);
-    transform: translateY(-5px);
-}
+        .play-button:hover {
+            background: linear-gradient(145deg, #218838, #28a745);
+            transform: translateY(-5px);
+        }
 
-.footer {
-    background-color: #1a1a1a;
-    text-align: center;
-    padding: 10px;
-    color: #aaa;
-}
+        .footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 10px;
+            color: #aaa;
+        }
 
-#redirectButton {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: #333;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    font-size: 1.2em; 
-    color: white;
-}
+        #redirectButton, .random-game {
+            position: fixed;
+            bottom: 20px;
+            background: #333;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            font-size: 1.2em;
+            color: white;
+        }
 
-.random-game {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #333;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    font-size: 1.2em;
-}
-.random-game:hover {
-    transform: scale(1.05);
-}
+        .random-game {
+            right: 20px;
+        }
 
-.random-game a {
-    color: white; /* Set the text color to white */
-    text-decoration: none; /* Remove the underline */
-}
+        .random-game:hover {
+            transform: scale(1.05);
+        }
 
+        .random-game a {
+            color: white;
+            text-decoration: none;
+        }
 
-.random-game img {
-    width: 200px;
-    height: 200px;
-    border-radius: 5px;
-    display: block;
-    margin: 0 auto 5px;
-}
+        .random-game img {
+            width: 200px;
+            height: 200px;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto 5px;
+        }
 
-@media (max-width: 768px) {
-    .play-button {
-        padding: 15px 30px;
-        font-size: 1.5em;
-    }
+        @media (max-width: 768px) {
+            .play-button {
+                padding: 15px 30px;
+                font-size: 1.5em;
+            }
 
-    #icon {
-        width: 200px;
-        height: 200px;
-    }
-}
-
+            #icon {
+                width: 200px;
+                height: 200px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -176,35 +166,33 @@ body {
             <a href="./About.html" class="nav-button">About</a>
         </div>
     </div>
-    <!-- particles.js container -->
-<div id="particles-js">
-        <!-- scripts -->
-          <script src="particles.js"></script>
-          <script src="js/app.js"></script>
-      <div class="content">
-          <p>Hey, what is this website?</p>
-          <p>This is a simple game website to have fun.</p>
-          <p>It will be updated pretty often.</p>
-          <img src="./img/icons.png" id="icon" alt="Game Icon">
-      </div>
 
-      <div class="play-button-container">
-          <a href="./Games.html" class="play-button">Play</a>
-      </div>
+    <div id="particles-js"></div> <!-- Particles.js container -->
+    
+    <div class="content">
+        <p>Hey, what is this website?</p>
+        <p>This is a simple game website to have fun.</p>
+        <p>It will be updated pretty often.</p>
+        <img src="./img/icons.png" id="icon" alt="Game Icon">
+    </div>
 
-      <div class="footer">
-      </div>
+    <div class="play-button-container">
+        <a href="./Games.html" class="play-button">Play</a>
+    </div>
 
-  <div id="random-game" class="random-game" style="display: none;">
-      <a id="random-game-link" href="">
-          <img id="random-game-image" src="" alt="Random Game">
-          <h3 id="random-game-title"></h3>
-          <p id="random-game-description"></p>
-      </a>
-  </div>
-  <div> 
-      <button id="redirectButton" class = >Click this to turn your tab into an About-Blank Tab</button>
-  </div>   
+    <div class="footer"></div>
+
+    <div id="random-game" class="random-game" style="display: none;">
+        <a id="random-game-link" href="">
+            <img id="random-game-image" src="" alt="Random Game">
+            <h3 id="random-game-title"></h3>
+            <p id="random-game-description"></p>
+        </a>
+    </div>
+
+    <button id="redirectButton">Click this to turn your tab into an About-Blank Tab</button>
+
+    <script src="particles.js"></script>
     <script>
         // Array of games
         const games = [
@@ -242,7 +230,7 @@ body {
                 url: 'game.html?game=Toss%20the%20Turtle',
                 image: './img/tosstheturtle.webp',
                 title: 'Toss The Turtle',
-                description: 'Play Subway Surfers!'
+                description: 'Play Toss The Turtle!'
             }
         ];
 
@@ -263,31 +251,28 @@ body {
 
         // Call the function when the page loads
         window.onload = selectRandomGame;
+
+        document.getElementById('redirectButton').addEventListener('click', function() {
+            // Create a new blank page
+            const newWindow = window.open('about:blank');
+            
+            // Set styles for the new window's document
+            newWindow.document.body.style.margin = '0';
+            newWindow.document.body.style.padding = '0';
+            newWindow.document.body.style.height = '100vh';
+            newWindow.document.body.style.width = '100vw';
+            newWindow.document.body.style.overflow = 'hidden';
+
+            // Create an iframe element
+            const iframe = newWindow.document.createElement('iframe');
+            iframe.src = window.location.href; // Use the current URL
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+
+            // Append the iframe to the new window's document
+            newWindow.document.body.appendChild(iframe);
+        });
     </script>
-<script>
-document.getElementById('redirectButton').addEventListener('click', function() {
-    // Create a new blank page
-    const newWindow = window.open('about:blank');
-    
-    // Set styles for the new window's document
-    newWindow.document.body.style.margin = '0';
-    newWindow.document.body.style.padding = '0';
-    newWindow.document.body.style.height = '100vh'; // Full height
-    newWindow.document.body.style.width = '100vw';  // Full width
-    newWindow.document.body.style.overflow = 'hidden'; // Prevent scrolling
-
-    // Create an iframe element
-    const iframe = newWindow.document.createElement('iframe');
-    iframe.src = window.location.href; // Use the current URL
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    iframe.style.border = 'none';
-
-    // Append the iframe to the new window's document
-    newWindow.document.body.appendChild(iframe);
-});
-
-</script>
-</div>
 </body>
 </html>
