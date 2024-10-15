@@ -8,167 +8,33 @@
     <script src="js/app.js" defer></script>
     <script src="particles.js"></script>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #1a1a1a;
-            color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden; /* Prevent overflow */
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background: #1a1a1a;
+    color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden; /* Prevent overflow */
+}
 
-        #particles-js {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; /* Send it to the back */
-        }
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Send particles to the back */
+}
 
-        .topbar {
-            background-color: rgba(34, 34, 34, 0.9);
-            padding: 20px;
-            text-align: center;
-            border-bottom: 2px solid #444;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+.topbar, .content, .play-button-container, .random-game, #redirectButton {
+    position: relative; /* Position these normally */
+    z-index: 1; /* Bring these to the front */
+}
 
-        .topbar h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        .nav-buttons {
-            margin-top: 10px;
-        }
-
-        .nav-button, .nav-button2 {
-            text-decoration: none;
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            border-radius: 30px;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .nav-button:hover {
-            background-color: #555;
-            transform: scale(1.05);
-        }
-
-        .nav-button2 {
-            background-color: #666;
-        }
-
-        .content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
-            z-index: 1; /* Bring content to the front */
-        }
-
-        .content p {
-            font-size: 1.5em;
-            margin: 5px 0;
-        }
-
-        #icon {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            margin: 10px 0;
-        }
-
-        .play-button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 5px 0;
-        }
-
-        .play-button {
-            text-decoration: none;
-            background: linear-gradient(145deg, #28a745, #218838);
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 2em;
-            border-radius: 50px;
-            border: 2px solid #1e7e34;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .play-button:hover {
-            background: linear-gradient(145deg, #218838, #28a745);
-            transform: translateY(-5px);
-        }
-
-        .footer {
-            background-color: rgba(26, 26, 26, 0.9);
-            text-align: center;
-            padding: 10px;
-            color: #aaa;
-        }
-
-        #redirectButton, .random-game {
-            position: fixed;
-            bottom: 20px;
-            background: #333;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            font-size: 1.2em;
-            color: white;
-            z-index: 1; /* Bring button to the front */
-        }
-
-        .random-game {
-            right: 20px;
-        }
-
-        .random-game:hover {
-            transform: scale(1.05);
-        }
-
-        .random-game a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .random-game img {
-            width: 200px;
-            height: 200px;
-            border-radius: 5px;
-            display: block;
-            margin: 0 auto 5px;
-        }
-
-        @media (max-width: 768px) {
-            .play-button {
-                padding: 15px 30px;
-                font-size: 1.5em;
-            }
-
-            #icon {
-                width: 200px;
-                height: 200px;
-            }
-        }
     </style>
 </head>
 <body>
