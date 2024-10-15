@@ -16,6 +16,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            position: fixed;
             justify-content: space-between;
         }
         a {
@@ -67,6 +68,7 @@
 
         .content {
             flex-grow: 1;
+            position: fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -80,6 +82,7 @@
         .content p {
             font-size: 1.5em;
             margin: 5px 0; /* Reduced margin */
+            position: fixed;
         }
 
         #icon {
@@ -89,6 +92,7 @@
             height: 250px;
             border-radius: 50%;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            position: fixed;
         }
 
         .play-button-container {
@@ -96,6 +100,7 @@
             justify-content: center;
             align-items: center;
             margin: 5px 0; /* Reduced margin */
+            position: fixed;
         }
 
         .play-button {
@@ -107,15 +112,18 @@
             border-radius: 50px;
             border: 2px solid #1e7e34;
             transition: background 0.3s, transform 0.2s;
+            position: fixed;
         }
 
         .play-button:hover {
             background: linear-gradient(145deg, #218838, #28a745);
             transform: translateY(-5px);
+            position: fixed;
         }
 
         .footer {
             background-color: #1a1a1a;
+            position: fixed;
             text-align: center;
             padding: 10px; /* Reduced padding */
             color: #aaa;
