@@ -136,6 +136,25 @@
             visibility: visible;
             opacity: 1;
         }
+
+        .search-bar {
+            margin: 15px auto; /* Center the search bar */
+            text-align: center; /* Center align the input */
+        }
+
+        .search-input {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .search-input:focus {
+            background-color: #444;
+        }
     </style>
 </head>
 <body>
@@ -148,37 +167,58 @@
             <a href="./About.html" class="nav-button">About</a>
         </div>
     </div>
+    
+    <div class="search-bar">
+        <input type="text" id="search-input" class="search-input" placeholder="Search games...">
+    </div>
+
     <div class="content" id="game-buttons-container">
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('game-buttons-container');
+            const searchInput = document.getElementById('search-input');
+            let gameData = [];
+
             fetch('/games.json')
                 .then(response => response.json())
                 .then(data => {
-                    const container = document.getElementById('game-buttons-container');
-                    data.gameButtons.forEach(game => {
-                        const gameButton = document.createElement('a');
-                        gameButton.className = 'game-button';
-                        gameButton.href = game.link;
-
-                        const imageContainer = document.createElement('div');
-                        imageContainer.className = 'image-container';
-
-                        const img = document.createElement('img');
-                        img.src = game.image;
-                        img.alt = game.text;
-
-                        const tooltip = document.createElement('div');
-                        tooltip.className = 'tooltip';
-                        tooltip.textContent = game.text;
-
-                        imageContainer.appendChild(img);
-                        imageContainer.appendChild(tooltip);
-                        gameButton.appendChild(imageContainer);
-                        container.appendChild(gameButton);
-                    });
+                    gameData = data.gameButtons;
+                    renderGames(gameData);
                 })
                 .catch(error => console.error('Error loading game buttons:', error));
+
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                const filteredGames = gameData.filter(game => game.text.toLowerCase().includes(searchTerm));
+                renderGames(filteredGames);
+            });
+
+            function renderGames(games) {
+                container.innerHTML = ''; // Clear previous games
+                games.forEach(game => {
+                    const gameButton = document.createElement('a');
+                    gameButton.className = 'game-button';
+                    gameButton.href = game.link;
+
+                    const imageContainer = document.createElement('div');
+                    imageContainer.className = 'image-container';
+
+                    const img = document.createElement('img');
+                    img.src = game.image;
+                    img.alt = game.text;
+
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tooltip';
+                    tooltip.textContent = game.text;
+
+                    imageContainer.appendChild(img);
+                    imageContainer.appendChild(tooltip);
+                    gameButton.appendChild(imageContainer);
+                    container.appendChild(gameButton);
+                });
+            }
         });
     </script>
 </body>
