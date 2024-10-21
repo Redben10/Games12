@@ -223,22 +223,52 @@
       "image": "./img/vex7.webp"
     },
     {
-      "text": "Stack",
-      "link": "game.html?game=Stack",
-      "link2": "Games/stack.html",
-      "image": "./Games/stack/stack.png"
-    }, 
-    {
-      "text": "World's Hardest Game",
-      "link": "game.html?game=World's%20Hardest%20Game",
-      "link2": "Games/worlds-hardest-game.html",
-      "image": "./img/worlds-hardest-game.webp"
+      "text": "FNAF",
+      "link": "game.html?game=FNAF",
+      "link2": "Games/fnaf",
+      "image": "./img/fnaf.png"
     },
     {
-      "text": "World's Hardest Game 2",
-      "link": "game.html?game=World's%20Hardest%20Game%202",
-      "link2": "Games/worlds-hardest-game-2.html",
-      "image": "./img/worlds-hardest-game.webp"
+      "text": "FNAF 2",
+      "link": "game.html?game=FNAF%202",
+      "link2": "Games/fnaf2",
+      "image": "./img/fnaf2.png"
+    },
+    {
+      "text": "FNAF 3",
+      "link": "game.html?game=FNAF%203",
+      "link2": "Games/fnaf3",
+      "image": "./img/fnaf3.png"
+    },
+    {
+      "text": "FNAF 4",
+      "link": "game.html?game=FNAF%204",
+      "link2": "Games/fnaf4",
+      "image": "./img/fnaf4.png"
+    },
+    {
+      "text": "Fireboy and Watergirl",
+      "link": "game.html?game=Fireboy%20and%20Watergirl",
+      "link2": "Games/fireboywatergirl",
+      "image": "./img/fireboywatergirl.png"
+    },
+    {
+      "text": "Fireboy and Watergirl 2",
+      "link": "game.html?game=Fireboy%20and%20Watergirl%202",
+      "link2": "Games/fireboywatergirl2",
+      "image": "./img/fireboywatergirl2.png"
+    },
+    {
+      "text": "Fireboy and Watergirl 3",
+      "link": "game.html?game=Fireboy%20and%20Watergirl%203",
+      "link2": "Games/fireboywatergirl3",
+      "image": "./img/fireboywatergirl3.png"
+    },
+    {
+      "text": "Fireboy and Watergirl 4",
+      "link": "game.html?game=Fireboy%20and%20Watergirl%204",
+      "link2": "Games/fireboywatergirl4",
+      "image": "./img/fireboywatergirl4.png"
     }
   ]
 }
