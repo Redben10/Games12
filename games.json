@@ -43,6 +43,12 @@
       "image": "/img/BAS.webp"
     },
     {
+      "text": "Baldis Basics",
+      "link": "game.html?game=Basics",
+      "link2": "Games/basics.html",
+      "image": "Games/basics/splash.png"
+    },
+    {
       "text": "Bad Piggies",
       "link": "game.html?game=Bad%20Piggies",
       "link2": "Games/badpiggies.html",
@@ -83,6 +89,12 @@
       "link": "game.html?game=Funny%20Shooter%202",
       "link2": "Games/funnyshooter2.html",
       "image": "Games/funnyshooter2/894abba63a6b23fed823f404831f444f.jpeg"
+    },
+    {
+      "text": "Adventure Capitalist",
+      "link": "game.html?game=Adventure%20Capitalist",
+      "link2": "Games/adventure.html",
+      "image": "img/adventure.jpeg"
     },
     {
       "text": "Impossible Quiz",
