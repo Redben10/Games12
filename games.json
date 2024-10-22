@@ -13,12 +13,6 @@
       "image": "./img/subwaysurfers.png"
     },
     {
-      "text": "Retro Bowl",
-      "link": "game.html?game=Retro%20Bowl",
-      "link2": "Games/retro",
-      "image": "/img/Retro.png"
-    },
-    {
       "text": "Rooftop Snipers",
       "link": "game.html?game=Rooftop%20Snipers",
       "link2": "Games/rooftop-snipers",
