@@ -49,6 +49,12 @@
       "image": "Games/badpiggies/badpiggies.png"
     },
     {
+      "text": "Tetris",
+      "link": "game.html?game=Tetris",
+      "link2": "Games/Tetris/games-content/play-tetris-content/resources/project-tetriscom/game/game-698B044815E60783/target-desktop/game.html",
+      "image": "img/tetris.png"
+    }
+    {
       "text": "Cookie Clicker",
       "link": "Games/cookies.html",
       "link2": "Games/cookies.html",
