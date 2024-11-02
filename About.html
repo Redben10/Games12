@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TXTTunnel Chat</title>
+    <title>About Void's Games</title>
+    <script src="js/app.js" defer></script>
+    <script src="particles.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -24,7 +27,7 @@
             width: 100%;
             height: 100%;
             z-index: 0; 
-            pointer-events: none;
+            pointer-events: none
         }
 
         .topbar {
@@ -69,188 +72,46 @@
             background-color: #666;
         }
 
-        #chatContainer {
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1; /* Ensure chat container is above particles */
-            background-color: rgba(34, 34, 34, 0.8);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        #messages {
-            border: 1px solid #ddd;
-            padding: 10px;
-            height: 300px;
-            overflow-y: scroll;
-            margin-bottom: 10px;
-            background-color: #222;
-            border-radius: 5px;
-        }
-
-        #inputContainer {
+        .content {
+            flex-grow: 1;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
         }
 
-        #messageInput {
-            flex: 1;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: #333;
-            color: #f5f5f5;
+        .content p {
+            font-size: 1.5em;
+            margin: 20px 0;
         }
 
-        #sendButton, #createButton, #joinButton, #setUsernameButton {
-            padding: 10px;
-            margin-left: 5px;
-            cursor: pointer;
-            background-color: #555;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            transition: background-color 0.3s;
+        .email-link {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
         }
 
-        #sendButton:hover, #createButton:hover, #joinButton:hover, #setUsernameButton:hover {
-            background-color: #777;
+        .email-link:hover {
+            color: #218838;
         }
     </style>
 </head>
 <body>
-    <div id="particles-js"></div> <!-- Particles.js container -->
     <div class="topbar">
-        <h1>TXTTunnel Chat</h1>
+        <h1>About Void's Games</h1>
         <div class="nav-buttons">
             <a href="./" class="nav-button">Home</a>
             <a href="./Games.html" class="nav-button">Games</a>
             <a href="./About.html" class="nav-button2">About</a>
         </div>
     </div>
-    <div id="chatContainer">
-        <div id="roomInfo">Connected to room: <strong>global</strong></div>
-        <div id="messages"></div>
-        <div id="inputContainer">
-            <input type="text" id="messageInput" placeholder="Type a message...">
-            <button id="sendButton">Send</button>
-        </div>
-        <div style="margin-top: 10px;">
-            <button id="createButton">Create Room</button>
-            <button id="joinButton">Join Room</button>
-            <button id="setUsernameButton">Set Username</button>
-        </div>
+        <div id="particles-js"></div> <!-- Particles.js container -->
+    <div class="content">
+        <p>Hey, this is a passion project I hope you enjoy.</p>
+        <p>Send feedback, ideas, game requests, and bugs to this email: <a href="mailto:voidgenarator@gmail.com" class="email-link">voidgenarator@gmail.com</a></p>
     </div>
-
-    <script>
-        const serverUrl = "https://txttunnel.onrender.com";
-        let currentRoom = "global";
-        let username = "";
-        const messagesDiv = document.getElementById("messages");
-        const roomInfo = document.getElementById("roomInfo");
-        const sendButton = document.getElementById("sendButton");
-        const messageInput = document.getElementById("messageInput");
-
-        joinRoom("global");
-
-        document.getElementById("createButton").addEventListener("click", () => {
-            const roomId = prompt("Enter room code to create:");
-            if (roomId) {
-                fetch(`${serverUrl}/api/v2/tunnel/checkRoomExists`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id: roomId })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.exists) {
-                        alert("This room is already created. Try joining it instead.");
-                    } else {
-                        createRoom(roomId);
-                    }
-                })
-                .catch(console.error);
-            }
-        });
-
-        document.getElementById("joinButton").addEventListener("click", () => {
-            const roomId = prompt("Enter room code to join:");
-            if (roomId) {
-                joinRoom(roomId);
-            }
-        });
-
-        document.getElementById("setUsernameButton").addEventListener("click", () => {
-            const newUsername = prompt("Enter your username:");
-            if (newUsername) {
-                username = newUsername;
-                alert(`Username set to: ${username}`);
-            }
-        });
-
-        sendButton.addEventListener("click", sendMessage);
-        messageInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") sendMessage();
-        });
-
-        function createRoom(roomId) {
-            fetch(`${serverUrl}/api/v2/tunnel/create`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id: roomId })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    response.text().then(alert);
-                    return;
-                }
-                currentRoom = roomId;
-                roomInfo.innerHTML = `Connected to room: <strong>${currentRoom}</strong>`;
-                joinRoom(currentRoom);
-            })
-            .catch(console.error);
-        }
-
-        function joinRoom(roomId) {
-            currentRoom = roomId;
-            roomInfo.innerHTML = `Connected to room: <strong>${currentRoom}</strong>`;
-            messagesDiv.innerHTML = "";
-
-            const eventSource = new EventSource(`${serverUrl}/api/v2/tunnel/stream?id=${currentRoom}&subChannel=main`);
-            eventSource.onmessage = (event) => {
-                const message = document.createElement("div");
-                message.textContent = event.data;
-                messagesDiv.appendChild(message);
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            };
-        }
-
-        function sendMessage() {
-            const message = messageInput.value.trim();
-            if (message === "") return;
-
-            if (username === "") {
-                alert("Please set a username before sending messages.");
-                return;
-            }
-
-            const formattedMessage = `${username}: ${message}`;
-
-            fetch(`${serverUrl}/api/v2/tunnel/send`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id: currentRoom, content: formattedMessage, subChannel: "main" })
-            })
-            .then(response => {
-                if (response.ok) {
-                    messageInput.value = "";
-                } else {
-                    response.text().then(alert);
-                }
-            })
-            .catch(console.error);
-        }
-    </script>
 </body>
 </html>
