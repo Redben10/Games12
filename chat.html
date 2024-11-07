@@ -26,7 +26,7 @@
             width: 100%;
             height: 100%;
             z-index: 0; 
-            pointer-events: none
+            pointer-events: none;
         }
 
         .topbar {
@@ -125,7 +125,6 @@
 <body>
     <div id="particles-js"></div>
 
-
     <div class="topbar">
         <h1>Chat Room</h1>
         <div class="nav-buttons">
@@ -135,6 +134,7 @@
             <a href="./chat.html" class="nav-button2">Chat Room</a>
         </div>
     </div>
+
     <div id="chatContainer">
         <div id="roomInfo">Connected to room: <strong>global</strong></div>
         <div id="messages"></div>
@@ -158,6 +158,7 @@
         const sendButton = document.getElementById("sendButton");
         const messageInput = document.getElementById("messageInput");
 
+        // Join the global room initially
         joinRoom("global");
 
         document.getElementById("createButton").addEventListener("click", () => {
@@ -223,12 +224,18 @@
             roomInfo.innerHTML = `Connected to room: <strong>${currentRoom}</strong>`;
             messagesDiv.innerHTML = "";
 
+            // Set up the EventSource to listen only for messages in the current room
             const eventSource = new EventSource(`${serverUrl}/api/v2/tunnel/stream?id=${currentRoom}&subChannel=main`);
+
             eventSource.onmessage = (event) => {
                 const message = document.createElement("div");
                 message.textContent = event.data;
                 messagesDiv.appendChild(message);
                 messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            };
+
+            eventSource.onerror = (error) => {
+                console.error("Error with EventSource:", error);
             };
         }
 
@@ -243,16 +250,21 @@
 
             const formattedMessage = `${username}: ${message}`;
 
+            // Ensure the message is sent to the current room
             fetch(`${serverUrl}/api/v2/tunnel/send`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id: currentRoom, content: formattedMessage, subChannel: "main" })
+                body: JSON.stringify({
+                    id: currentRoom, // Ensure the room ID corresponds to the current room
+                    content: formattedMessage,
+                    subChannel: "main" // Still using a subChannel, you can change it if needed
+                })
             })
             .then(response => {
                 if (response.ok) {
-                    messageInput.value = "";
+                    messageInput.value = ""; // Clear the input field after sending
                 } else {
-                    response.text().then(alert);
+                    response.text().then(alert); // Handle errors by displaying an alert
                 }
             })
             .catch(console.error);
@@ -260,4 +272,3 @@
     </script>
 </body>
 </html>
-
