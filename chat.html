@@ -152,12 +152,26 @@
     <script>
         const serverUrl = "https://talk.absalt.com";
         let currentRoom = "global";
-        let username = "";
+        let username = localStorage.getItem('username') || "";  // Get saved username from localStorage
         const messagesDiv = document.getElementById("messages");
         const roomInfo = document.getElementById("roomInfo");
         const sendButton = document.getElementById("sendButton");
         const messageInput = document.getElementById("messageInput");
+        const setUsernameButton = document.getElementById("setUsernameButton");
         let eventSource;
+
+        // Prompt for username if not already set
+        if (!username) {
+            username = prompt("Enter your username:");
+            if (username) {
+                localStorage.setItem('username', username);  // Save username to localStorage
+            }
+        }
+
+        // Display username on page load
+        if (username) {
+            alert(`Welcome, ${username}!`);
+        }
 
         // Join the global room initially
         joinRoom("global");
@@ -189,11 +203,13 @@
             }
         });
 
-        document.getElementById("setUsernameButton").addEventListener("click", () => {
-            const newUsername = prompt("Enter your username:");
+        // Allow changing the username
+        setUsernameButton.addEventListener("click", () => {
+            const newUsername = prompt("Enter your new username:");
             if (newUsername) {
                 username = newUsername;
-                alert(`Username set to: ${username}`);
+                localStorage.setItem('username', username);  // Save new username to localStorage
+                alert(`Username changed to: ${username}`);
             }
         });
 
