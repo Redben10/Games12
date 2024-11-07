@@ -246,6 +246,9 @@
                 eventSource.close();
             }
 
+            // Send the "Joined the chat" message to notify others in the room
+            sendJoinMessage();
+
             // Set up the EventSource to listen only for messages in the current room
             eventSource = new EventSource(`${serverUrl}/api/v2/tunnel/stream?id=${currentRoom}&subChannel=main`);
 
@@ -259,6 +262,32 @@
             eventSource.onerror = (error) => {
                 console.error("Error with EventSource:", error);
             };
+        }
+
+        function sendJoinMessage() {
+            if (!username) {
+                alert("Please set a username before sending messages.");
+                return;
+            }
+
+            const joinMessage = `${username} Joined the chat`;
+
+            // Send the "Joined the chat" message to the current room
+            fetch(`${serverUrl}/api/v2/tunnel/send`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    id: currentRoom, // Ensure the room ID corresponds to the current room
+                    content: joinMessage,
+                    subChannel: "main" // Still using a subChannel, you can change it if needed
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    response.text().then(alert);
+                }
+            })
+            .catch(console.error);
         }
 
         function sendMessage() {
