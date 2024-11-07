@@ -246,10 +246,26 @@
                 eventSource.close();
             }
 
+            // Fetch and display the last 5 messages before joining the chat
+            fetch(`${serverUrl}/api/v2/tunnel/messages?roomId=${currentRoom}&count=5`)
+                .then(response => response.json())
+                .then(data => {
+                    // Display the last 5 messages
+                    if (data.messages) {
+                        data.messages.forEach(message => {
+                            const messageElement = document.createElement("div");
+                            messageElement.textContent = message.content;
+                            messagesDiv.appendChild(messageElement);
+                        });
+                        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                    }
+                })
+                .catch(error => console.error("Error fetching messages:", error));
+
             // Send the "Joined the chat" message to notify others in the room
             sendJoinMessage();
 
-            // Set up the EventSource to listen only for messages in the current room
+            // Set up the EventSource to listen for messages in the current room
             eventSource = new EventSource(`${serverUrl}/api/v2/tunnel/stream?id=${currentRoom}&subChannel=main`);
 
             eventSource.onmessage = (event) => {
@@ -265,21 +281,14 @@
         }
 
         function sendJoinMessage() {
-            if (!username) {
-                alert("Please set a username before sending messages.");
-                return;
-            }
-
-            const joinMessage = `${username} Joined the chat`;
-
-            // Send the "Joined the chat" message to the current room
+            const joinMessage = `${username} joined the chat`;
             fetch(`${serverUrl}/api/v2/tunnel/send`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    id: currentRoom, // Ensure the room ID corresponds to the current room
+                    id: currentRoom,  // Room ID
                     content: joinMessage,
-                    subChannel: "main" // Still using a subChannel, you can change it if needed
+                    subChannel: "main"
                 })
             })
             .then(response => {
