@@ -159,6 +159,8 @@
         const messageInput = document.getElementById("messageInput");
         const setUsernameButton = document.getElementById("setUsernameButton");
         let eventSource;
+        let isRoomEmpty = true; // Flag to track if room is empty
+        let emptyRoomMessageSent = false; // To ensure automated message is sent only once
 
         // Prompt for username if not already set
         if (!username) {
@@ -273,11 +275,43 @@
                 message.textContent = event.data;
                 messagesDiv.appendChild(message);
                 messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+                // Check if the room is empty and send automated message
+                if (event.data.includes("joined the chat")) {
+                    isRoomEmpty = false;  // Someone has joined, so the room is no longer empty
+                    emptyRoomMessageSent = false; // Reset to allow further automated messages if room becomes empty again
+                }
             };
 
             eventSource.onerror = (error) => {
                 console.error("Error with EventSource:", error);
             };
+
+            // Periodically check if room is empty and send automated message if needed
+            setInterval(sendAutomatedMessage, 3000); // Check every 3 seconds
+        }
+
+        function sendAutomatedMessage() {
+            if (isRoomEmpty && !emptyRoomMessageSent) {
+                const automatedMessage = "The room is empty, waiting for participants...";
+                fetch(`${serverUrl}/api/v2/tunnel/send`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        id: currentRoom,
+                        content: automatedMessage,
+                        subChannel: "main"
+                    })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        emptyRoomMessageSent = true; // Prevent further automated messages until someone joins
+                    } else {
+                        response.text().then(alert); // Handle errors by displaying an alert
+                    }
+                })
+                .catch(console.error);
+            }
         }
 
         function sendJoinMessage() {
