@@ -196,5 +196,36 @@
             }
         }
     </script>
+<script>
+    // Function to send a "ping" to the external server
+    async function pingServer() {
+        try {
+            const response = await fetch('https://talk.absalt.com/', {
+                method: 'GET',  // You can also use POST if required by the server
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (response.ok) {
+                console.log('Ping sent to https://talk.absalt.com/ successfully!');
+            } else {
+                console.error('Failed to send ping to server:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error sending ping to server:', error);
+        }
+    }
+
+    // Call pingServer when the page is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        pingServer(); // Send ping when the page is loaded
+    });
+
+    // Optionally, send ping every 30 seconds
+    setInterval(() => {
+        pingServer(); // Send ping every 30 seconds (30000ms)
+    }, 30000);
+</script>
 </body>
 </html>
