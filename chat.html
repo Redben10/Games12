@@ -9,17 +9,6 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a;<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/app.js" defer></script>
-    <script src="particles.js"></script>
-    <title>Chat Room</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
             background-color: #1a1a1a;
             color: #f5f5f5;
             margin: 0;
@@ -94,343 +83,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        #roomInfo {
-            font-size: 1.2em;
-            color: #f5f5f5;
-        }
-
-        #messages {
-            border: 1px solid #ddd;
-            padding: 10px;
-            height: 300px;
-            overflow-y: scroll;
-            margin-bottom: 10px;
-            background-color: #222;
-            border-radius: 5px;
-        }
-
-        #inputContainer {
-            display: flex;
-        }
-
-        #messageInput {
-            flex: 1;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: #333;
-            color: #f5f5f5;
-        }
-
-        #sendButton, #createButton, #joinButton, #setUsernameButton {
-            padding: 10px;
-            margin-left: 5px;
-            cursor: pointer;
-            background-color: #555;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            transition: background-color 0.3s;
-        }
-
-        #sendButton:hover, #createButton:hover, #joinButton:hover, #setUsernameButton:hover {
-            background-color: #777;
-        }
-    </style>
-</head>
-<body>
-    <div id="particles-js"></div>
-
-    <div class="topbar">
-        <h1>Chat Room</h1>
-        <div class="nav-buttons">
-            <a href="./" class="nav-button">Home</a>
-            <a href="./Games.html" class="nav-button">Games</a>
-            <a href="./About.html" class="nav-button">About</a>
-            <a href="./chat.html" class="nav-button2">Chat Room</a>
-        </div>
-    </div>
-
-    <div id="chatContainer">
-        <div id="roomInfo">Connected to room: <strong>global</strong></div>
-        <div id="messages"></div>
-        <div id="inputContainer">
-            <input type="text" id="messageInput" placeholder="Type a message...">
-            <button id="sendButton">Send</button>
-        </div>
-        <div style="margin-top: 10px;">
-            <button id="createButton">Create Room</button>
-            <button id="joinButton">Join Room</button>
-            <button id="setUsernameButton">Set Username</button>
-        </div>
-    </div>
-
-    <script>
-        const serverUrl = "https://talk.absalt.com";
-        let currentRoom = "global";
-        let username = localStorage.getItem('username') || "";  // Get saved username from localStorage
-        const messagesDiv = document.getElementById("messages");
-        const roomInfo = document.getElementById("roomInfo");
-        const sendButton = document.getElementById("sendButton");
-        const messageInput = document.getElementById("messageInput");
-        const setUsernameButton = document.getElementById("setUsernameButton");
-        let eventSource;
-
-        // Prompt for username if not already set
-        if (!username) {
-            // Prompt for username when the page loads
-            username = prompt("Enter your username:");
-            if (username) {
-                localStorage.setItem('username', username);  // Save username to localStorage
-            } else {
-                // If the user cancels the prompt or provides an empty username, keep asking until a valid username is provided
-                while (!username) {
-                    username = prompt("Please enter a valid username:");
-                    if (username) {
-                        localStorage.setItem('username', username);  // Save username to localStorage
-                    }
-                }
-            }
-        }
-
-        // Display username on page load
-        if (username) {
-            alert(`Welcome, ${username}!`);
-        }
-
-        // Join the global room initially
-        joinRoom("global");
-
-        document.getElementById("createButton").addEventListener("click", () => {
-            const roomId = prompt("Enter room code to create:");
-            if (roomId) {
-                fetch(`${serverUrl}/api/v2/tunnel/checkRoomExists`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id: roomId })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.exists) {
-                        alert("This room is already created. Try joining it instead.");
-                    } else {
-                        createRoom(roomId);
-                    }
-                })
-                .catch(console.error);
-            }
-        });
-
-        document.getElementById("joinButton").addEventListener("click", () => {
-            const roomId = prompt("Enter room code to join:");
-            if (roomId) {
-                joinRoom(roomId);
-            }
-        });
-
-        // Allow changing the username
-        setUsernameButton.addEventListener("click", () => {
-            const newUsername = prompt("Enter your new username:");
-            if (newUsername) {
-                username = newUsername;
-                localStorage.setItem('username', username);  // Save new username to localStorage
-                alert(`Username changed to: ${username}`);
-            }
-        });
-
-        sendButton.addEventListener("click", sendMessage);
-        messageInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") sendMessage();
-        });
-
-        function createRoom(roomId) {
-            fetch(`${serverUrl}/api/v2/tunnel/create`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id: roomId })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    response.text().then(alert);
-                    return;
-                }
-                currentRoom = roomId;
-                roomInfo.innerHTML = `Connected to room: <strong>${currentRoom}</strong>`;
-                joinRoom(currentRoom);
-            })
-            .catch(console.error);
-        }
-
-        function joinRoom(roomId) {
-            currentRoom = roomId;
-            roomInfo.innerHTML = `Connected to room: <strong>${currentRoom}</strong>`;
-            messagesDiv.innerHTML = ""; // Clear previous messages
-
-            // Close the previous EventSource connection if it exists
-            if (eventSource) {
-                eventSource.close();
-            }
-
-            // Fetch and display the last 5 messages before joining the chat
-            fetch(`${serverUrl}/api/v2/tunnel/messages?roomId=${currentRoom}&count=5`)
-                .then(response => response.json())
-                .then(data => {
-                    // Display the last 5 messages
-                    if (data.messages) {
-                        data.messages.forEach(message => {
-                            const messageElement = document.createElement("div");
-                            messageElement.textContent = message.content;
-                            messagesDiv.appendChild(messageElement);
-                        });
-                        messagesDiv.scrollTop = messagesDiv.scrollHeight;
-                    }
-                })
-                .catch(error => console.error("Error fetching messages:", error));
-
-            // Send the "Joined the chat" message to notify others in the room
-            sendJoinMessage();
-
-            // Set up the EventSource to listen for messages in the current room
-            eventSource = new EventSource(`${serverUrl}/api/v2/tunnel/stream?id=${currentRoom}&subChannel=main`);
-
-            eventSource.onmessage = (event) => {
-                const message = document.createElement("div");
-                message.textContent = event.data;
-                messagesDiv.appendChild(message);
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            };
-
-            eventSource.onerror = (error) => {
-                console.error("Error with EventSource:", error);
-            };
-        }
-
-        function sendJoinMessage() {
-            const joinMessage = `${username} joined the chat`;
-            fetch(`${serverUrl}/api/v2/tunnel/send`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    id: currentRoom,  // Room ID
-                    content: joinMessage,
-                    subChannel: "main"
-                })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    response.text().then(alert);
-                }
-            })
-            .catch(console.error);
-        }
-
-        function sendMessage() {
-            const message = messageInput.value.trim();
-            if (message === "") return;
-
-            if (username === "") {
-                alert("Please set a username before sending messages.");
-                return;
-            }
-
-            const formattedMessage = `${username}: ${message}`;
-
-            // Ensure the message is sent to the current room
-            fetch(`${serverUrl}/api/v2/tunnel/send`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    id: currentRoom, // Ensure the room ID corresponds to the current room
-                    content: formattedMessage,
-                    subChannel: "main" // Still using a subChannel, you can change it if needed
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    messageInput.value = ""; // Clear the input field after sending
-                } else {
-                    response.text().then(alert); // Handle errors by displaying an alert
-                }
-            })
-            .catch(console.error);
-        }
-    </script>
-</body>
-</html>
-
-            color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #particles-js {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .topbar {
-            background-color: #222;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 2px solid #444;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .topbar h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #f5f5f5;
-        }
-
-        .nav-buttons {
-            margin-top: 10px;
-        }
-
-        .nav-button, .nav-button2 {
-            text-decoration: none;
-            background-color: #333;
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            border-radius: 30px;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .nav-button:hover, .nav-button2:hover {
-            background-color: #555;
-            transform: scale(1.05);
-        }
-
-        .nav-button2 {
-            background-color: #666;
-        }
-
-        #chatContainer {
-            width: 90%;
-            max-width: 1600px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            background-color: rgba(34, 34, 34, 0.8);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
         #messages {
             border: 1px solid #ddd;
             padding: 10px;
@@ -518,7 +170,7 @@
 
         // Display username on page load
         if (username) {
-            alert(`Welcome, ${username}!`);
+            alert(Welcome, ${username}!);
         }
 
         // Join the global room initially
@@ -527,7 +179,7 @@
         document.getElementById("createButton").addEventListener("click", () => {
             const roomId = prompt("Enter room code to create:");
             if (roomId) {
-                fetch(`${serverUrl}/api/v2/tunnel/checkRoomExists`, {
+                fetch(${serverUrl}/api/v2/tunnel/checkRoomExists, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ id: roomId })
@@ -557,7 +209,7 @@
             if (newUsername) {
                 username = newUsername;
                 localStorage.setItem('username', username);  // Save new username to localStorage
-                alert(`Username changed to: ${username}`);
+                alert(Username changed to: ${username});
             }
         });
 
@@ -567,7 +219,7 @@
         });
 
         function createRoom(roomId) {
-            fetch(`${serverUrl}/api/v2/tunnel/create`, {
+            fetch(${serverUrl}/api/v2/tunnel/create, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id: roomId })
@@ -578,7 +230,7 @@
                     return;
                 }
                 currentRoom = roomId;
-                roomInfo.innerHTML = `Connected to room: <strong>${currentRoom}</strong>`;
+                roomInfo.innerHTML = Connected to room: <strong>${currentRoom}</strong>;
                 joinRoom(currentRoom);
             })
             .catch(console.error);
@@ -586,7 +238,7 @@
 
         function joinRoom(roomId) {
             currentRoom = roomId;
-            roomInfo.innerHTML = `Connected to room: <strong>${currentRoom}</strong>`;
+            roomInfo.innerHTML = Connected to room: <strong>${currentRoom}</strong>;
             messagesDiv.innerHTML = ""; // Clear previous messages
 
             // Close the previous EventSource connection if it exists
@@ -595,7 +247,7 @@
             }
 
             // Fetch and display the last 5 messages before joining the chat
-            fetch(`${serverUrl}/api/v2/tunnel/messages?roomId=${currentRoom}&count=5`)
+            fetch(${serverUrl}/api/v2/tunnel/messages?roomId=${currentRoom}&count=5)
                 .then(response => response.json())
                 .then(data => {
                     // Display the last 5 messages
@@ -614,7 +266,7 @@
             sendJoinMessage();
 
             // Set up the EventSource to listen for messages in the current room
-            eventSource = new EventSource(`${serverUrl}/api/v2/tunnel/stream?id=${currentRoom}&subChannel=main`);
+            eventSource = new EventSource(${serverUrl}/api/v2/tunnel/stream?id=${currentRoom}&subChannel=main);
 
             eventSource.onmessage = (event) => {
                 const message = document.createElement("div");
@@ -629,8 +281,8 @@
         }
 
         function sendJoinMessage() {
-            const joinMessage = `${username} joined the chat`;
-            fetch(`${serverUrl}/api/v2/tunnel/send`, {
+            const joinMessage = ${username} joined the chat;
+            fetch(${serverUrl}/api/v2/tunnel/send, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -656,10 +308,10 @@
                 return;
             }
 
-            const formattedMessage = `${username}: ${message}`;
+            const formattedMessage = ${username}: ${message};
 
             // Ensure the message is sent to the current room
-            fetch(`${serverUrl}/api/v2/tunnel/send`, {
+            fetch(${serverUrl}/api/v2/tunnel/send, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
