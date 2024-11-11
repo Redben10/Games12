@@ -164,6 +164,7 @@
         const messageInput = document.getElementById("messageInput");
         const setUsernameButton = document.getElementById("setUsernameButton");
         let eventSource;
+        let isSendingMessage = false; // Flag to prevent spam
 
         if (!username) {
             username = prompt("Enter your username:");
@@ -302,6 +303,8 @@
         }
 
         function sendMessage() {
+            if (isSendingMessage) return; // Prevent sending while a message is being sent
+
             const message = messageInput.value.trim();
             if (message === "") return;
 
@@ -312,8 +315,8 @@
 
             const formattedMessage = `${username}: ${message}`;
 
-            // Disable send button to prevent multiple clicks
-            sendButton.disabled = true;
+            // Prevent spamming by setting the flag
+            isSendingMessage = true;
 
             fetch(`${serverUrl}/api/v2/tunnel/send`, {
                 method: "POST",
@@ -333,8 +336,10 @@
             })
             .catch(console.error)
             .finally(() => {
-                // Re-enable the send button after sending the message or on error
-                sendButton.disabled = false;
+                // Allow message sending again after a short delay
+                setTimeout(() => {
+                    isSendingMessage = false;
+                }, 1000); // 1 second delay
             });
         }
     </script>
