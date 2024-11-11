@@ -83,6 +83,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
+        #roomInfo {
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
         #messages {
             border: 1px solid #ddd;
             padding: 10px;
@@ -160,7 +165,6 @@
         const setUsernameButton = document.getElementById("setUsernameButton");
         let eventSource;
 
-        // Prompt for username if not already set
         if (!username) {
             username = prompt("Enter your username:");
             if (username) {
@@ -173,7 +177,6 @@
             alert(`Welcome, ${username}!`);
         }
 
-        // Join the global room initially
         joinRoom("global");
 
         document.getElementById("createButton").addEventListener("click", () => {
@@ -241,7 +244,6 @@
             roomInfo.innerHTML = `Connected to room: <strong>${currentRoom}</strong>`;
             messagesDiv.innerHTML = ""; // Clear previous messages
 
-            // Close the previous EventSource connection if it exists
             if (eventSource) {
                 eventSource.close();
             }
@@ -310,6 +312,9 @@
 
             const formattedMessage = `${username}: ${message}`;
 
+            // Disable send button to prevent multiple clicks
+            sendButton.disabled = true;
+
             fetch(`${serverUrl}/api/v2/tunnel/send`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -326,9 +331,12 @@
                     response.text().then(alert); // Handle errors by displaying an alert
                 }
             })
-            .catch(console.error);
+            .catch(console.error)
+            .finally(() => {
+                // Re-enable the send button after sending the message or on error
+                sendButton.disabled = false;
+            });
         }
     </script>
 </body>
 </html>
-
