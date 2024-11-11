@@ -77,10 +77,9 @@
             padding: 20px;
         }
 
-        /* Adjusted iframe container to be smaller */
         .iframe-container {
-            width: 80%;  /* Reduced from 90% to 80% */
-            height: 70vh;  /* Reduced from 80vh to 70vh */
+            width: 80%;  
+            height: 70vh;
             position: relative;
             background: linear-gradient(135deg, rgba(66, 245, 236, 0.3), rgba(255, 255, 255, 0.1));
             border-radius: 20px;
@@ -110,7 +109,7 @@
             }
         }
 
-        /* Square Fullscreen Button */
+
         .fullscreen-button {
             position: absolute;
             bottom: 15px;
@@ -181,13 +180,13 @@
                 } else {
                     iframe.requestFullscreen(); 
                 }
-            } else if (iframe.webkitRequestFullscreen) { /* Safari */
+            } else if (iframe.webkitRequestFullscreen) { 
                 if (document.webkitFullscreenElement) {
                     document.webkitExitFullscreen();
                 } else {
                     iframe.webkitRequestFullscreen();
                 }
-            } else if (iframe.msRequestFullscreen) { /* IE11 */
+            } else if (iframe.msRequestFullscreen) { 
                 if (document.msFullscreenElement) {
                     document.msExitFullscreen();
                 } else {
