@@ -31,6 +31,12 @@
       "image": "/img/idle.png"
     },
     {
+      "text": "Bit planes",
+      "link": "game.html?game=Bit%20planes",
+      "link2": "Games/planes.html",
+      "image": "/img/planes.png"
+    },
+    {
       "text": "Basketball Stars",
       "link": "game.html?game=Basketball%20Stars",
       "link2": "Games/basketball-stars.html",
