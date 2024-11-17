@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/app.js" defer></script>
+    <script src="js/tunnel_lib.js" defer></script>
     <script src="particles.js"></script>
     <title>Chat Room</title>
     <style>
@@ -145,203 +146,101 @@
         <div id="messages"></div>
         <div id="inputContainer">
             <input type="text" id="messageInput" placeholder="Type a message...">
-            <button id="sendButton">Send</button>
+            <button id="sendButton" onclick="sendMessage()">Send</button>
         </div>
         <div style="margin-top: 10px;">
-            <button id="createButton">Create Room</button>
-            <button id="joinButton">Join Room</button>
-            <button id="setUsernameButton">Set Username</button>
+            <button id="createButton" onclick="createOrJoinRoom()">Create or Join a Room</button>
+            <button id="setUsernameButton" onclick="setUserName()">Set Username</button>
         </div>
     </div>
 
     <script>
-        const serverUrl = "https://talk.absalt.com";
-        let currentRoom = "global";
-        let username = localStorage.getItem('username') || "";  // Get saved username from localStorage
-        const messagesDiv = document.getElementById("messages");
-        const roomInfo = document.getElementById("roomInfo");
-        const sendButton = document.getElementById("sendButton");
-        const messageInput = document.getElementById("messageInput");
-        const setUsernameButton = document.getElementById("setUsernameButton");
-        let eventSource;
-        let isSendingMessage = false; // Flag to prevent spam
+        
+        async function createOrJoinRoom(){
+            let room = prompt("Enter the name of the room you want to join or create, leave it blank to randomize:");
+            window.chatConnection.close();
+            if(room){
+                window.chatConnection = getTunnelConnection(room);
+            } else window.chatConnection = getTunnelConnection('');
 
-        if (!username) {
-            username = prompt("Enter your username:");
-            if (username) {
-                localStorage.setItem('username', username);  // Save username to localStorage
-            }
+            await window.chatConnection.init();
+            await window.chatConnection.create();
+            await  window.chatConnection.connect();
+
+            document.getElementById('roomInfo').innerText = `Connected to room: ${window.chatConnection.tunnelId}`;
+        }
+        
+        function getTunnelConnection(id){
+            return new TunnelConnection(
+                // The URL of the server
+                'https://lluck.hackclub.app',
+
+                // The name of the room
+                id,
+                
+                // The subchannel to use. Use other subchannels for different purposes such as sending video, audio, or other constant data.
+                "main",
+
+                // The function to call when a message is received
+                processMessage,
+
+                // Configuration options, like encrption or compresson.
+                {encryption: false, compression: false}
+            )
         }
 
-        // Display username on page load
-        if (username) {
-            alert(`Welcome, ${username}!`);
+        function localMessage(username, message, isSystem){
+            if(!isSystem) isSystem = false;
+            let messagesContainer = document.getElementById('messages');
+            let messageElement = document.createElement('div');
+            messageElement.innerText = `[${username}]: ${message}`;
+            if(isSystem) messageElement.style.color = '#f00';
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
-        joinRoom("global");
-
-        document.getElementById("createButton").addEventListener("click", () => {
-            const roomId = prompt("Enter room code to create:");
-            if (roomId) {
-                fetch(`${serverUrl}/api/v2/tunnel/checkRoomExists`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id: roomId })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.exists) {
-                        alert("This room is already created. Try joining it instead.");
-                    } else {
-                        createRoom(roomId);
-                    }
-                })
-                .catch(console.error);
+        function processMessage(message){
+            try{
+                let messageData = JSON.parse(message);
+                if(!messageData.username || !messageData.message) throw new Error('Invalid message data: ' + message);
+                localMessage(messageData.username, messageData.message);
+            } catch(e){
+                localMessage('System', 'An error occurred while processing the message: ' + e, false, true);
             }
-        });
-
-        document.getElementById("joinButton").addEventListener("click", () => {
-            const roomId = prompt("Enter room code to join:");
-            if (roomId) {
-                joinRoom(roomId);
-            }
-        });
-
-        // Allow changing the username
-        setUsernameButton.addEventListener("click", () => {
-            const newUsername = prompt("Enter your new username:");
-            if (newUsername) {
-                username = newUsername;
-                localStorage.setItem('username', username);  // Save new username to localStorage
-                alert(`Username changed to: ${username}`);
-            }
-        });
-
-        sendButton.addEventListener("click", sendMessage);
-        messageInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") sendMessage();
-        });
-
-        function createRoom(roomId) {
-            fetch(`${serverUrl}/api/v2/tunnel/create`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id: roomId })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    response.text().then(alert);
-                    return;
-                }
-                currentRoom = roomId;
-                roomInfo.innerHTML = `Connected to room: <strong>${currentRoom}</strong>`;
-                joinRoom(currentRoom);
-            })
-            .catch(console.error);
         }
-
-        function joinRoom(roomId) {
-            currentRoom = roomId;
-            roomInfo.innerHTML = `Connected to room: <strong>${currentRoom}</strong>`;
-            messagesDiv.innerHTML = ""; // Clear previous messages
-
-            if (eventSource) {
-                eventSource.close();
-            }
-
-            // Fetch and display the last 5 messages before joining the chat
-            fetch(`${serverUrl}/api/v2/tunnel/messages?roomId=${currentRoom}&count=5`)
-                .then(response => response.json())
-                .then(data => {
-                    // Display the last 5 messages
-                    if (data.messages) {
-                        data.messages.forEach(message => {
-                            const messageElement = document.createElement("div");
-                            messageElement.textContent = message.content;
-                            messagesDiv.appendChild(messageElement);
-                        });
-                        messagesDiv.scrollTop = messagesDiv.scrollHeight;
-                    }
-                })
-                .catch(error => console.error("Error fetching messages:", error));
-
-            // Send the "Joined the chat" message to notify others in the room
-            sendJoinMessage();
-
-            // Set up the EventSource to listen for messages in the current room
-            eventSource = new EventSource(`${serverUrl}/api/v2/tunnel/stream?id=${currentRoom}&subChannel=main`);
-
-            eventSource.onmessage = (event) => {
-                const message = document.createElement("div");
-                message.textContent = event.data;
-                messagesDiv.appendChild(message);
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        
+        function sendMessage(){
+            let userMessage = document.getElementById('messageInput').value;
+            let messageData = {
+                username: window.userName,
+                message: userMessage
             };
 
-            eventSource.onerror = (error) => {
-                console.error("Error with EventSource:", error);
-            };
+            window.chatConnection.send(JSON.stringify(messageData));
+            document.getElementById('messageInput').value = '';
         }
 
-        function sendJoinMessage() {
-            const joinMessage = `${username} joined the chat`;
-            fetch(`${serverUrl}/api/v2/tunnel/send`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    id: currentRoom,
-                    content: joinMessage,
-                    subChannel: "main"
-                })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    response.text().then(alert);
-                }
-            })
-            .catch(console.error);
-        }
+        function setUserName(){
+            let username = prompt('Enter your username:');
 
-        function sendMessage() {
-            if (isSendingMessage) return; // Prevent sending while a message is being sent
-
-            const message = messageInput.value.trim();
-            if (message === "") return;
-
-            if (username === "") {
-                alert("Please set a username before sending messages.");
-                return;
+            if(username){
+                window.userName = username;
+                localStorage['userName'] = username;
+            } else {
+                setUserName();
             }
-
-            const formattedMessage = `${username}: ${message}`;
-
-            // Prevent spamming by setting the flag
-            isSendingMessage = true;
-
-            fetch(`${serverUrl}/api/v2/tunnel/send`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    id: currentRoom,
-                    content: formattedMessage,
-                    subChannel: "main"
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    messageInput.value = ""; // Clear the input field after sending
-                } else {
-                    response.text().then(alert); // Handle errors by displaying an alert
-                }
-            })
-            .catch(console.error)
-            .finally(() => {
-                // Allow message sending again after a short delay
-                setTimeout(() => {
-                    isSendingMessage = false;
-                }, 1000); // 1 second delay
-            });
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.userName = localStorage['userName'] || null;
+            if(!window.userName) setUserName();
+
+            window.chatConnection = getTunnelConnection('global');
+
+            window.chatConnection.init();
+            window.chatConnection.create();
+            window.chatConnection.connect();
+        });
     </script>
 </body>
 </html>
