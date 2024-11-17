@@ -129,6 +129,28 @@
             transform: scale(1.1);
             box-shadow: 0 0 15px rgba(66, 245, 236, 0.6);
         }
+
+        .picture_in_picture-button {
+            position: absolute;
+            left: 10px;
+            bottom: 15px;
+            right: 15px;
+            width: 50px; /* Square size */
+            height: 50px;
+            background-image: url('./img/picture_in_picture.png');
+            background-size: cover;
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(66, 245, 236, 0.3);
+            border-radius: 5px; /* Square shape with slightly rounded corners */
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .picture_in_picture-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(66, 245, 236, 0.6);
+        }
+
     </style>
 </head>
 <body>
@@ -146,6 +168,7 @@
         <div class="iframe-container">
             <iframe id="gameIframe" src="" frameborder="0"></iframe>
             <button class="fullscreen-button" onclick="toggleFullscreen()"></button>
+            <button class="picture_in_picture-button" onclick="openPictureInPicture()"></button>
         </div>
     </div>
 
@@ -193,6 +216,35 @@
                     iframe.msRequestFullscreen();
                 }
             }
+        }
+
+        async function openPictureInPicture() {
+            const iframe = document.getElementById('gameIframe');
+            const pipWindow = await documentPictureInPicture.requestWindow();
+            pipWindow.addEventListener('pagehide', () => {
+                document.getElementById('iframe-container').appendChild(iframe);
+            });
+
+            let iframeStyle = document.createElement('style');
+            iframeStyle.innerHTML = `
+            iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    display: block;
+                    z-index: 1000;
+                }
+            `;
+
+            pipWindow.document.head.appendChild(iframeStyle);
+            pipWindow.document.body.appendChild(iframe);
+            iframe.remove();
         }
     </script>
 </script>
