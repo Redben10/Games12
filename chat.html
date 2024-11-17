@@ -166,8 +166,10 @@
             await window.chatConnection.init();
             await window.chatConnection.create();
             await  window.chatConnection.connect();
+            room = window.chatConnection.tunnelId;
 
             document.getElementById('roomInfo').innerText = `Connected to room: ${window.chatConnection.tunnelId}`;
+            localMessage('System', `--- You are ${window.userName} connected to room ${room}. ---`, true);
         }
         
         function getTunnelConnection(id){
