@@ -219,7 +219,7 @@
         }
 
         async function openPictureInPicture() {
-            const iframe = document.getElementById('gameIframe');
+            let iframe = document.getElementById('gameIframe');
             const pipWindow = await documentPictureInPicture.requestWindow();
             pipWindow.addEventListener('pagehide', () => {
                 document.getElementById('iframe-container').appendChild(iframe);
@@ -241,9 +241,11 @@
                     z-index: 1000;
                 }
             `;
+            
+            const newIframe = iframe.cloneNode(true);
 
             pipWindow.document.head.appendChild(iframeStyle);
-            pipWindow.document.body.appendChild(iframe);
+            pipWindow.document.body.appendChild(newIframe);
             iframe.remove();
         }
     </script>
