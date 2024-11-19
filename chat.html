@@ -169,7 +169,7 @@
             room = window.chatConnection.tunnelId;
 
             document.getElementById('roomInfo').innerText = `Connected to room: ${window.chatConnection.tunnelId}`;
-            localMessage('System', `--- You are ${window.userName} connected to room ${room}. ---`, true);
+            localMessage('System:', `${window.userName} connected to room ${room}. ---`, true);
         }
         
         function getTunnelConnection(id){
