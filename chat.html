@@ -195,7 +195,7 @@
             if(!isSystem) isSystem = false;
             let messagesContainer = document.getElementById('messages');
             let messageElement = document.createElement('div');
-            messageElement.innerText = `[${username}]: ${message}`;
+            messageElement.innerText = `Daddy ${username}-kun: ${message}`;
             if(isSystem) messageElement.style.color = '#f00';
             messagesContainer.appendChild(messageElement);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
