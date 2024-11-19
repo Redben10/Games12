@@ -207,7 +207,7 @@
                 if(!messageData.username || !messageData.message) throw new Error('Invalid message data: ' + message);
                 localMessage(messageData.username, messageData.message);
             } catch(e){
-                localMessage('System', 'An error occurred while processing the message: ' + e, false, true);
+                console.log(e);
             }
         }
         
