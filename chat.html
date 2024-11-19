@@ -23,7 +23,7 @@
             margin-left: 10px;
             font-size: 1em;
             color: #FFFFFF;
-        }     
+        }
         #particles-js {
             position: absolute;
             top: 0;
@@ -33,7 +33,6 @@
             z-index: 0;
             pointer-events: none;
         }
-
         .topbar {
             background-color: #222;
             padding: 20px;
@@ -43,17 +42,14 @@
             top: 0;
             z-index: 1000;
         }
-
         .topbar h1 {
             margin: 0;
             font-size: 2.5em;
             color: #f5f5f5;
         }
-
         .nav-buttons {
             margin-top: 10px;
         }
-
         .nav-button, .nav-button2 {
             text-decoration: none;
             background-color: #333;
@@ -66,16 +62,13 @@
             border-radius: 30px;
             transition: background-color 0.3s, transform 0.2s;
         }
-
         .nav-button:hover, .nav-button2:hover {
             background-color: #555;
             transform: scale(1.05);
         }
-
         .nav-button2 {
             background-color: #666;
         }
-
         #chatContainer {
             width: 90%;
             max-width: 1600px;
@@ -87,12 +80,10 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
-
         #roomInfo {
             margin-bottom: 15px;
             color: #ddd;
         }
-
         #messages {
             border: 1px solid #ddd;
             padding: 10px;
@@ -102,11 +93,9 @@
             background-color: #222;
             border-radius: 5px;
         }
-
         #inputContainer {
             display: flex;
         }
-
         #messageInput {
             flex: 1;
             padding: 10px;
@@ -115,7 +104,6 @@
             background-color: #333;
             color: #f5f5f5;
         }
-
         #sendButton, #createButton, #joinButton, #setUsernameButton {
             padding: 10px;
             margin-left: 5px;
@@ -126,7 +114,6 @@
             color: #fff;
             transition: background-color 0.3s;
         }
-
         #sendButton:hover, #createButton:hover, #joinButton:hover, #setUsernameButton:hover {
             background-color: #777;
         }
@@ -134,7 +121,6 @@
 </head>
 <body>
     <div id="particles-js"></div>
-
     <div class="topbar">
         <h1>Chat Room</h1>
         <div class="nav-buttons">
@@ -144,12 +130,11 @@
             <a href="./chat.html" class="nav-button2">Chat Room</a>
         </div>
     </div>
-
     <div id="chatContainer">
         <div id="roomInfo">Connected to room: <strong>global</strong></div>
         <div id="messages"></div>
         <div id="inputContainer">
-            <input type="text" id="messageInput" placeholder="Type a message..." maxlength = "200">
+            <input type="text" id="messageInput" placeholder="Type a message..." maxlength="200">
             <button id="sendButton" onclick="sendMessage()">Send <span id="charCount">0 / 200</span></button>
         </div>
         <div style="margin-top: 10px;">
@@ -157,80 +142,65 @@
             <button id="setUsernameButton" onclick="setUserName()">Set Username</button>
         </div>
     </div>
-
     <script>
-        
-        async function createOrJoinRoom(){
+        async function createOrJoinRoom() {
             let room = prompt("Enter the name of the room you want to join or create, leave it blank to randomize:");
             window.chatConnection.close();
-            if(room){
+            if (room) {
                 window.chatConnection = getTunnelConnection(room);
             } else window.chatConnection = getTunnelConnection('');
-
             await window.chatConnection.init();
             await window.chatConnection.create();
-            await  window.chatConnection.connect();
+            await window.chatConnection.connect();
             room = window.chatConnection.tunnelId;
-
             document.getElementById('roomInfo').innerText = `Connected to room: ${window.chatConnection.tunnelId}`;
             localMessage('System:', `${window.userName} connected to room ${room}. ---`, true);
         }
-        
-        function getTunnelConnection(id){
+
+        function getTunnelConnection(id) {
             return new TunnelConnection(
-                // The URL of the server
                 'https://lluck.hackclub.app',
-
-                // The name of the room
                 id,
-                
-                // The subchannel to use. Use other subchannels for different purposes such as sending video, audio, or other constant data.
                 "main",
-
-                // The function to call when a message is received
                 processMessage,
-
-                // Configuration options, like encrption or compresson.
-                {encryption: false, compression: false}
+                { encryption: false, compression: false }
             )
         }
 
-        function localMessage(username, message, isSystem){
-            if(!isSystem) isSystem = false;
+        function localMessage(username, message, isSystem) {
+            if (!isSystem) isSystem = false;
             let messagesContainer = document.getElementById('messages');
             let messageElement = document.createElement('div');
             messageElement.innerText = `Daddy ${username}: ${message}`;
             document.getElementById('charCount').textContent = `0 / 200`;
-            if(isSystem) messageElement.style.color = '#f00';
+            if (isSystem) messageElement.style.color = '#f00';
             messagesContainer.appendChild(messageElement);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
-        function processMessage(message){
-            try{
+        function processMessage(message) {
+            try {
                 let messageData = JSON.parse(message);
-                if(!messageData.username || !messageData.message) throw new Error('Invalid message data: ' + message);
+                if (!messageData.username || !messageData.message) throw new Error('Invalid message data: ' + message);
                 localMessage(messageData.username, messageData.message);
-            } catch(e){
+            } catch (e) {
                 console.log(e);
             }
         }
-        
-        function sendMessage(){
+
+        function sendMessage() {
             let userMessage = document.getElementById('messageInput').value;
             let messageData = {
                 username: window.userName,
                 message: userMessage
             };
-
             window.chatConnection.send(JSON.stringify(messageData));
             document.getElementById('messageInput').value = '';
         }
 
-        function setUserName(){
+        function setUserName() {
             let username = prompt('Enter your username:');
-
-            if(username){
+            if (username) {
                 window.userName = username;
                 localStorage['userName'] = username;
             } else {
@@ -238,31 +208,42 @@
             }
         }
 
+        async function checkAndReconnect() {
+            if (!window.chatConnection.isConnected()) {
+                console.log("Connection lost. Attempting to reconnect...");
+                await window.chatConnection.init();
+                await window.chatConnection.create();
+                await window.chatConnection.connect();
+                console.log("Reconnected successfully.");
+                localMessage('System:', 'Reconnected to the chat room.', true);
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             window.userName = localStorage['userName'] || null;
-            if(!window.userName) setUserName();
-
+            if (!window.userName) setUserName();
             window.chatConnection = getTunnelConnection('global');
-
             window.chatConnection.init();
             window.chatConnection.create();
             window.chatConnection.connect();
+
+            setInterval(checkAndReconnect, 10000);
+
             document.addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                sendMessage();
-              }
+                if (event.key === "Enter") {
+                    sendMessage();
+                }
             });
         });
     </script>
     <script>
-      const input = document.getElementById('messageInput');
-      const charCount = document.getElementById('charCount');
-      const maxLength = input.getAttribute('maxlength');
-    
-      input.addEventListener('input', function() {
-        const currentLength = this.value.length;
-        charCount.textContent = `${currentLength} / ${maxLength}`;
-      });
+        const input = document.getElementById('messageInput');
+        const charCount = document.getElementById('charCount');
+        const maxLength = input.getAttribute('maxlength');
+        input.addEventListener('input', function() {
+            const currentLength = this.value.length;
+            charCount.textContent = `${currentLength} / ${maxLength}`;
+        });
     </script>
 </body>
 </html>
