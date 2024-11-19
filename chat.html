@@ -200,6 +200,7 @@
             let messagesContainer = document.getElementById('messages');
             let messageElement = document.createElement('div');
             messageElement.innerText = `Daddy ${username}: ${message}`;
+            document.getElementById('charCount').textContent = `0 / 200`;
             if(isSystem) messageElement.style.color = '#f00';
             messagesContainer.appendChild(messageElement);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
