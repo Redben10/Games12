@@ -25,6 +25,12 @@
       "image": "/img/roof.jpeg"
     },
     {
+      "text": "Getaway Shootout",
+      "link": "game.html?game=Getaway%20Shootout",
+      "link2": "Games/getawayshooter",
+      "image": "Games/getawayshooter/Untitled.jpeg"
+    },
+    {
       "text": "Minecraft",
       "link": "Games/eagle",
       "link2": "Games/eagle",
