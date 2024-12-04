@@ -163,6 +163,12 @@
       "image": "./img/motox3mw.webp"
     },
     {
+      "text": "Clicker Heroes",
+      "link": "game.html?game=Clicker%20Heroes",
+      "link2": "Games/clickerheroes.html",
+      "image": "Games/clickerheroes/clicker-heroes.png"
+    },
+    {
       "text": "Riddle School",
       "link": "game.html?game=Riddle%20School",
       "link2": "Games/riddleschool.html",
