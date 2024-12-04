@@ -331,6 +331,18 @@
       "image": "Games/ducklife6/ducklife6.png"
     },
     {
+      "text": "Drive Mad",
+      "link": "game.html?game=Drive%20Mad",
+      "link2": "Games/drivem",
+      "image": "img/drivem.jpeg"
+    },
+    {
+      "text": "Monster Tracks",
+      "link": "game.html?game=Monster%20Tracks",
+      "link2": "Games/monstert",
+      "image": "img/monstert.jpeg"
+    },
+    {
       "text": "FNAF",
       "link": "game.html?game=FNAF",
       "link2": "Games/fnaf",
