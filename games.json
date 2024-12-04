@@ -1,6 +1,12 @@
 {
   "gameButtons": [
     {
+      "text": "1on1soccer",
+      "link": "game.html?game=1on1soccer",
+      "link2": "Games/1on1soccer.html",
+      "image": "./Games/1on1soccer/logo.png"
+    },
+    {
       "text": "Burrito Bison",
       "link": "game.html?game=Burrito%20Bison",
       "link2": "Games/BurritoBison.html",
@@ -125,6 +131,12 @@
       "link": "game.html?game=Learn%20to%20Fly%202",
       "link2": "Games/LearnToFly2.html",
       "image": "./img/learntofly2.webp"
+    },
+    {
+      "text": "2drocketleague",
+      "link": "game.html?game=2drocketleague",
+      "link2": "Games/2drocketleague.html",
+      "image": "Games/2drocketleague/unnamed.png"
     },
     {
       "text": "Moto X3M",
