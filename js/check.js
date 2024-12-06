@@ -1,5 +1,6 @@
 if (!localStorage.getItem('access')) {
-    window.location.href = 'password.html';
+    // If they don't have access, redirect to "./"
+    window.location.href = './';
 } else {
     console.log('Access granted. Welcome to the main page!');
 }
