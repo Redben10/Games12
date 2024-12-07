@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const correctPassword = 'CHEESE';
 
         if (passwordInput.value === correctPassword) {
-            // Set access in localStorage
             localStorage.setItem('access', 'granted');
             
             window.location.href = './';
